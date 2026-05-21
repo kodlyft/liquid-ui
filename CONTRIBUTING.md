@@ -6,7 +6,7 @@ need to know to land a PR.
 ## Setup
 
 ```bash
-git clone https://github.com/liquid-ui/liquid-ui.git
+git clone https://github.com/kodlyft/liquid-ui.git
 cd liquid-ui
 npm install
 ```
@@ -44,10 +44,10 @@ npm run build       # Production library bundle
   `defineEmits<{ (e: 'click', event: MouseEvent): void }>()`.
 - **CSS class naming:** `lq-<component>__<element>--<modifier>`. Component
   modifiers go on the root; never style your component from the outside.
-- **No magic numbers** in CSS — use the tokens in `src/styles/tokens.css`.
+- **No magic numbers** in CSS use the tokens in `src/styles/tokens.css`.
 - Run `npm run lint:fix` and `npm run format` before opening a PR.
 
-## Commit messages — Conventional Commits
+## Commit messages Conventional Commits
 
 This is enforced by **commitlint** on every commit. Format:
 
@@ -71,7 +71,7 @@ docs(readme): add theming section
 test(modal): cover destructive confirm path
 ```
 
-**Breaking changes** trigger a major-version bump — add `!` after the type or a
+**Breaking changes** trigger a major-version bump add `!` after the type or a
 `BREAKING CHANGE:` footer:
 
 ```
@@ -98,7 +98,7 @@ which:
 4. Creates a GitHub release with notes.
 5. Commits the new `CHANGELOG.md` and `package.json` back.
 
-That's why commit messages matter — they _are_ the changelog.
+That's why commit messages matter they _are_ the changelog.
 
 ## Reporting bugs
 

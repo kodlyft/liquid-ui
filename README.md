@@ -5,12 +5,12 @@
 **A Vue 3 component library with the iOS 26 Liquid Glass aesthetic.**
 
 [![npm version](https://img.shields.io/npm/v/liquid-ui.svg?style=flat-square)](https://www.npmjs.com/package/liquid-ui)
-[![CI](https://img.shields.io/github/actions/workflow/status/liquid-ui/liquid-ui/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/liquid-ui/liquid-ui/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/kodlyft/liquid-ui/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/kodlyft/liquid-ui/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![semantic-release](https://img.shields.io/badge/semantic--release-conventional-e10079?style=flat-square&logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
 Layered blur, tinted glass, soft specular highlights, spring micro-interactions
-— rendered as 22 production-ready Vue 3 components.
+rendered as 22 production-ready Vue 3 components.
 
 </div>
 
@@ -20,14 +20,14 @@ Layered blur, tinted glass, soft specular highlights, spring micro-interactions
 
 - **22 components** across 7 categories: buttons, forms, display, overlays,
   navigation, media, and input.
-- **Authentic iOS 26 Liquid Glass treatment** — backdrop blur + saturation, top
+- **Authentic iOS 26 Liquid Glass treatment** backdrop blur + saturation, top
   inner highlight, soft inset shadow, specular sheen overlay, accent halo glow.
-- **Vue 3 SFCs with `<script setup lang="ts">`** — full type inference, v-model,
+- **Vue 3 SFCs with `<script setup lang="ts">`** full type inference, v-model,
   slots, emits.
 - **Light & dark themes** out of the box with a single `data-theme` attribute.
-- **Themeable** — every glass, accent, blur, and radius value is a CSS custom
+- **Themeable** every glass, accent, blur, and radius value is a CSS custom
   property you can override at runtime.
-- **Tree-shakable** — named ESM exports; pay only for what you use.
+- **Tree-shakable** named ESM exports; pay only for what you use.
 - **Zero runtime deps** beyond Vue itself.
 
 ## Install

@@ -17,7 +17,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    // Allow single-word component names — our prefix is "Liquid"
+    // Allow single-word component names our prefix is "Liquid"
     'vue/multi-word-component-names': 'off',
     // Reasonable defaults
     'vue/require-default-prop': 'off',
@@ -25,5 +25,5 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
   },
-  ignorePatterns: ['dist', 'node_modules', 'coverage', '*.config.*', '.husky'],
+  ignorePatterns: ['dist', 'node_modules', 'coverage', '*.config.*', '.husky', 'js'],
 }
