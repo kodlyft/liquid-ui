@@ -1,3 +1,7 @@
+## <small>1.0.1 (2026-05-21)</small>
+
+* refactor: update theme to light mode and enhance preview functionality with new animations ([4caa93b](https://github.com/kodlyft/liquid-ui/commit/4caa93b))
+
 ## 1.0.0 (2026-05-21)
 
 * fix: add body-max-line-length rule and create settings.local.json for permissions ([b10ab79](https://github.com/kodlyft/liquid-ui/commit/b10ab79))
