@@ -4,7 +4,7 @@
 
 **A Vue 3 component library with the iOS 26 Liquid Glass aesthetic.**
 
-[![npm version](https://img.shields.io/npm/v/liquid-ui.svg?style=flat-square)](https://www.npmjs.com/package/liquid-ui)
+[![npm version](https://img.shields.io/npm/v/@kodlyft/liquid-ui.svg?style=flat-square)](https://www.npmjs.com/package/@kodlyft/liquid-ui)
 [![CI](https://img.shields.io/github/actions/workflow/status/kodlyft/liquid-ui/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/kodlyft/liquid-ui/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![semantic-release](https://img.shields.io/badge/semantic--release-conventional-e10079?style=flat-square&logo=semantic-release)](https://github.com/semantic-release/semantic-release)
@@ -33,8 +33,8 @@ rendered as 22 production-ready Vue 3 components.
 ## Install
 
 ```bash
-npm install liquid-ui
-# or: pnpm add liquid-ui  / yarn add liquid-ui
+npm install @kodlyft/liquid-ui
+# or: pnpm add @kodlyft/liquid-ui  / yarn add @kodlyft/liquid-ui
 ```
 
 Peer dep: **Vue 3.3+**.
@@ -44,8 +44,8 @@ Peer dep: **Vue 3.3+**.
 ```ts
 // main.ts
 import { createApp } from 'vue'
-import LiquidUI from 'liquid-ui'
-import 'liquid-ui/style.css'
+import LiquidUI from '@kodlyft/liquid-ui'
+import '@kodlyft/liquid-ui/style.css'
 import App from './App.vue'
 
 createApp(App).use(LiquidUI).mount('#app')
@@ -55,7 +55,7 @@ Or import components individually for better tree-shaking:
 
 ```vue
 <script setup lang="ts">
-import { LiquidButton, LiquidToggle } from 'liquid-ui'
+import { LiquidButton, LiquidToggle } from '@kodlyft/liquid-ui'
 import 'liquid-ui/style.css'
 import { ref } from 'vue'
 
@@ -106,7 +106,7 @@ Override any token at the root of your app:
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { LiquidButton, LiquidModal } from 'liquid-ui'
+import { LiquidButton, LiquidModal } from '@kodlyft/liquid-ui'
 
 const open = ref(false)
 const onConfirm = () => console.log('confirmed!')
