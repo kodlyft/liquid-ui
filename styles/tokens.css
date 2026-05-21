@@ -4,9 +4,11 @@
 
 :root {
   /* ---- Type ---- */
-  --font-display: -apple-system, "SF Pro Display", "SF Pro", BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  --font-text:    -apple-system, "SF Pro Text",    "SF Pro", BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  --font-mono:    "SF Mono", "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --font-display:
+    -apple-system, 'SF Pro Display', 'SF Pro', BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-text:
+    -apple-system, 'SF Pro Text', 'SF Pro', BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
 
   /* ---- Accent (system blue) ---- */
   --accent-h: 211;
@@ -17,18 +19,18 @@
   --accent-fg: #ffffff;
 
   /* ---- Semantic colors ---- */
-  --red:    #ff453a;
+  --red: #ff453a;
   --orange: #ff9f0a;
   --yellow: #ffd60a;
-  --green:  #30d158;
-  --mint:   #63e6e2;
-  --teal:   #40c8e0;
-  --cyan:   #64d2ff;
-  --blue:   #0a84ff;
+  --green: #30d158;
+  --mint: #63e6e2;
+  --teal: #40c8e0;
+  --cyan: #64d2ff;
+  --blue: #0a84ff;
   --indigo: #5e5ce6;
   --purple: #bf5af2;
-  --pink:   #ff375f;
-  --brown:  #ac8e68;
+  --pink: #ff375f;
+  --brown: #ac8e68;
 
   /* ---- Radii ---- */
   --r-1: 6px;
@@ -72,6 +74,7 @@
 
   /* Surfaces (showcase chrome) */
   --bg-page: #0a0a0d;
+  --showcase-clean-bg: #101114;
   --surface-1: rgba(20, 20, 24, 0.6);
   --surface-2: rgba(28, 28, 32, 0.7);
 
@@ -87,7 +90,7 @@
 }
 
 /* ---- Light theme override ---- */
-:root[data-theme="light"] {
+:root[data-theme='light'] {
   --glass-bg: rgba(255, 255, 255, calc(0.55 * var(--glass-opacity)));
   --glass-bg-strong: rgba(255, 255, 255, calc(0.78 * var(--glass-opacity)));
   --glass-bg-soft: rgba(255, 255, 255, calc(0.35 * var(--glass-opacity)));
@@ -102,6 +105,7 @@
   --text-4: rgba(0, 0, 0, 0.28);
 
   --bg-page: #f5f5f7;
+  --showcase-clean-bg: #f6f7fb;
   --surface-1: rgba(255, 255, 255, 0.7);
   --surface-2: rgba(255, 255, 255, 0.85);
 }

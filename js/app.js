@@ -23,15 +23,32 @@
         Object.keys(defs).forEach((k) => (knobs[k] = defs[k].default))
       }
       watch(activePage, seedKnobs, { immediate: true })
+
+      const previewUpdating = ref(false)
+      let previewTimer
+      const pulsePreview = () => {
+        previewUpdating.value = false
+        const start = () => {
+          previewUpdating.value = true
+          clearTimeout(previewTimer)
+          previewTimer = setTimeout(() => {
+            previewUpdating.value = false
+          }, 420)
+        }
+        if (typeof requestAnimationFrame === 'function') requestAnimationFrame(start)
+        else start()
+      }
+
       const setKnob = (key, v) => {
         knobs[key] = v
+        pulsePreview()
       }
 
       // --- Theme / wallpaper / tweaks (persisted) ---
-      const PERSIST_KEY = 'liquid-ui-state-v1'
+      const PERSIST_KEY = 'liquid-ui-state-v3'
       const tweaks = reactive({
-        theme: 'dark',
-        wallpaper: 'sunset',
+        theme: 'light',
+        wallpaper: 'clean',
         accent: '#0a84ff',
         blur: 24,
         opacity: 1,
@@ -99,7 +116,12 @@
               onSearch: (q) => (query.value = q),
             }),
             // Main canvas
-            h(MainCanvas, { page: activePage.value, knobs, onUpdate: setKnob }),
+            h(MainCanvas, {
+              page: activePage.value,
+              knobs,
+              previewUpdating: previewUpdating.value,
+              onKnobChange: setKnob,
+            }),
             // Right panel
             h(RightPanel, {
               page: activePage.value,
@@ -107,7 +129,7 @@
               tweaks,
               wallpaper: wallpaper.value,
               tweaksOpen: tweaksOpen.value,
-              onUpdate: setKnob,
+              onKnobChange: setKnob,
               onToggleTweaks: () => (tweaksOpen.value = !tweaksOpen.value),
             }),
           ]),
@@ -132,8 +154,8 @@
 
   // ---------- MainCanvas — page header + demo + variants + code ----------
   const MainCanvas = defineComponent({
-    props: ['page', 'knobs'],
-    emits: ['update'],
+    props: ['page', 'knobs', 'previewUpdating'],
+    emits: ['knob-change'],
     setup(props, { emit }) {
       return () => {
         const page = props.page
@@ -143,7 +165,7 @@
           ...knobs,
           ...extras,
           updateValue: (v) => {
-            if (page.isModel) emit('update', page.isModel, v)
+            if (page.isModel) emit('knob-change', page.isModel, v)
           },
           onKey: () => {},
         }
@@ -153,7 +175,10 @@
         else if (page.custom === 'menu') demoBody = h(SS.MenuDemo, { knobs })
         else if (page.custom === 'toast') demoBody = h(SS.ToastDemo, { knobs })
         else if (page.custom === 'tabbar')
-          demoBody = h(SS.TabBarDemo, { knobs, onUpdate: (k, v) => emit('update', k, v) })
+          demoBody = h(SS.TabBarDemo, {
+            knobs,
+            onUpdate: (k, v) => emit('knob-change', k, v),
+          })
         else if (typeof page.render === 'function') {
           const tpl = page.render(knobs)
           demoBody = h(SS.DynamicTemplate, {
@@ -181,6 +206,7 @@
                 {
                   class: [
                     'demo',
+                    props.previewUpdating ? 'is-updating' : '',
                     page.id === 'keyboard' ||
                     page.id === 'audio' ||
                     page.id === 'menu' ||
@@ -221,7 +247,7 @@
   // ---------- RightPanel — props playground ----------
   const RightPanel = defineComponent({
     props: ['page', 'knobs'],
-    emits: ['update'],
+    emits: ['knob-change'],
     setup(props, { emit }) {
       return () =>
         h('aside', { class: 'props' }, [
@@ -229,7 +255,7 @@
           h(SS.PropsPlayground, {
             knobs: props.page.knobs || {},
             values: props.knobs,
-            onUpdate: (k, v) => emit('update', k, v),
+            onKnobChange: (k, v) => emit('knob-change', k, v),
           }),
         ])
     },

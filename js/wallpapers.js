@@ -1,8 +1,15 @@
 // ============================================================
-// Wallpapers — rich gradient backdrops so glass has something to refract
+// Wallpapers — clean default plus optional rich backdrops for glass refraction
 // ============================================================
 
 window.Wallpapers = [
+  {
+    id: 'clean',
+    name: 'Clean',
+    css: `
+      background: var(--showcase-clean-bg);
+    `,
+  },
   {
     id: 'sunset',
     name: 'Sunset',
@@ -13,7 +20,7 @@ window.Wallpapers = [
         radial-gradient(at 50% 88%, hsla(280, 78%, 56%, 0.92) 0px, transparent 55%),
         radial-gradient(at 88% 75%, hsla(340, 92%, 60%, 0.82) 0px, transparent 50%),
         linear-gradient(135deg, #2a0e3b 0%, #1a0a2a 100%);
-    `
+    `,
   },
   {
     id: 'ocean',
@@ -25,7 +32,7 @@ window.Wallpapers = [
         radial-gradient(at 55% 85%, hsla(260, 78%, 50%, 0.78) 0px, transparent 55%),
         radial-gradient(at 8% 85%, hsla(180, 75%, 50%, 0.75) 0px, transparent 50%),
         linear-gradient(135deg, #061025 0%, #0a1f3d 100%);
-    `
+    `,
   },
   {
     id: 'aurora',
@@ -37,7 +44,7 @@ window.Wallpapers = [
         radial-gradient(at 55% 80%, hsla(195, 90%, 55%, 0.82) 0px, transparent 55%),
         radial-gradient(at 90% 75%, hsla(140, 75%, 50%, 0.78) 0px, transparent 50%),
         linear-gradient(135deg, #051c1a 0%, #1a0635 100%);
-    `
+    `,
   },
   {
     id: 'peach',
@@ -49,7 +56,7 @@ window.Wallpapers = [
         radial-gradient(at 50% 82%, hsla(45, 95%, 70%, 0.88) 0px, transparent 55%),
         radial-gradient(at 88% 80%, hsla(0, 85%, 75%, 0.82) 0px, transparent 50%),
         linear-gradient(135deg, #3d1218 0%, #2a0808 100%);
-    `
+    `,
   },
   {
     id: 'midnight',
@@ -60,7 +67,7 @@ window.Wallpapers = [
         radial-gradient(at 78% 70%, hsla(280, 75%, 35%, 0.95) 0px, transparent 55%),
         radial-gradient(at 18% 85%, hsla(220, 80%, 30%, 0.85) 0px, transparent 50%),
         linear-gradient(160deg, #0b0a18 0%, #060512 100%);
-    `
+    `,
   },
   {
     id: 'mint',
@@ -71,6 +78,6 @@ window.Wallpapers = [
         radial-gradient(at 80% 30%, hsla(195, 88%, 60%, 0.92) 0px, transparent 50%),
         radial-gradient(at 55% 85%, hsla(220, 75%, 55%, 0.78) 0px, transparent 55%),
         linear-gradient(135deg, #062722 0%, #021e2a 100%);
-    `
-  }
-];
+    `,
+  },
+]

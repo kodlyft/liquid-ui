@@ -3,15 +3,18 @@
    ============================================================ */
 
 .tweaks-panel {
-  position: absolute;
-  top: 64px;
+  position: fixed;
+  top: 76px;
   right: 24px;
   width: 280px;
+  max-height: min(620px, calc(100dvh - 128px));
   border-radius: 20px;
   padding: 0;
   z-index: 40;
   isolation: isolate;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .tweaks-head {
   display: flex;
@@ -36,18 +39,29 @@
   justify-content: center;
   color: var(--text-2);
   cursor: pointer;
-  transition: background 0.12s, color 0.12s;
+  transition:
+    background 0.12s,
+    color 0.12s;
 }
-.tweaks-close:hover { background: var(--glass-bg-strong); color: var(--text-1); }
+.tweaks-close:hover {
+  background: var(--glass-bg-strong);
+  color: var(--text-1);
+}
 
 .tweaks-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 14px 16px 18px;
 }
 
 .tweak-group {
   margin-bottom: 16px;
 }
-.tweak-group:last-child { margin-bottom: 0; }
+.tweak-group:last-child {
+  margin-bottom: 0;
+}
 
 .tweak-label,
 .tweak-label-row {
@@ -80,15 +94,19 @@
   border-radius: 999px;
   cursor: pointer;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.4),
-    0 2px 4px rgba(0,0,0,0.24);
-  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s;
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+  transition:
+    transform 0.2s var(--ease-spring),
+    box-shadow 0.2s;
   position: relative;
 }
-.tweak-swatch:hover { transform: scale(1.1); }
+.tweak-swatch:hover {
+  transform: scale(1.1);
+}
 .tweak-swatch.active {
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
     0 0 0 2.5px var(--bg-page),
     0 0 0 4.5px currentColor;
 }
@@ -102,19 +120,23 @@
   height: 36px;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
-  transition: transform 0.18s var(--ease-spring), box-shadow 0.18s;
-  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition:
+    transform 0.18s var(--ease-spring),
+    box-shadow 0.18s;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
-.tweak-wp:hover { transform: scale(1.05); }
+.tweak-wp:hover {
+  transform: scale(1.05);
+}
 .tweak-wp.active {
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
     0 0 0 2px var(--bg-page),
     0 0 0 4px var(--accent);
 }
 
-.tweak-group input[type="range"] {
+.tweak-group input[type='range'] {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
@@ -123,29 +145,29 @@
   border-radius: 999px;
   outline: none;
 }
-.tweak-group input[type="range"]::-webkit-slider-thumb {
+.tweak-group input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 16px;
   height: 16px;
   border-radius: 50%;
   background: linear-gradient(180deg, #fff, #efefef);
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
-.tweak-group input[type="range"]::-moz-range-thumb {
+.tweak-group input[type='range']::-moz-range-thumb {
   width: 16px;
   height: 16px;
   border-radius: 50%;
   background: white;
-  border: 1px solid rgba(0,0,0,0.1);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 
 /* Make right panel sliders look nice too */
-.knob input[type="range"] {
+.knob input[type='range'] {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
@@ -154,24 +176,27 @@
   border-radius: 999px;
   outline: none;
 }
-.knob input[type="range"]::-webkit-slider-thumb {
+.knob input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 14px;
   height: 14px;
   border-radius: 50%;
   background: white;
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
-.knob input[type="range"]::-moz-range-thumb {
+.knob input[type='range']::-moz-range-thumb {
   width: 14px;
   height: 14px;
   border-radius: 50%;
   background: white;
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   cursor: pointer;
 }
 
-.app-root { position: relative; height: 100vh; }
+.app-root {
+  position: relative;
+  height: 100vh;
+}
