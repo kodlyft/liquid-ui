@@ -4,7 +4,6 @@ on:
   push:
     branches: [main, next, beta]
 
-# Required permissions for semantic-release to push commits, tags, and releases
 permissions:
   contents: write
   issues: write
@@ -19,15 +18,19 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     # Skip if the commit message contains "[skip ci]" (semantic-release's own commits)
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    env:
+      RELEASE_AUTH_TOKEN: ${{ secrets.RELEASE_TOKEN != '' && secrets.RELEASE_TOKEN || github.token }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false
+          persist-credentials: true
+          token: ${{ env.RELEASE_AUTH_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -59,7 +62,12 @@ jobs:
 
       - name: Semantic Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ env.RELEASE_AUTH_TOKEN }}
+          GITHUB_TOKEN: ${{ env.RELEASE_AUTH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
+          GIT_AUTHOR_NAME: "Liquid UI Bot"
+          GIT_AUTHOR_EMAIL: "soundsofnation29@gmail.com"
+          GIT_COMMITTER_NAME: "Liquid UI Bot"
+          GIT_COMMITTER_EMAIL: "soundsofnation29@gmail.com"
         run: npx semantic-release
