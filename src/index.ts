@@ -1,4 +1,5 @@
 import type { App, Plugin } from 'vue'
+import './style.css'
 
 // Actions
 import LiquidButton from './components/Button/LiquidButton.vue'
