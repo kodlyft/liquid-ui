@@ -22,8 +22,8 @@ Layered blur, tinted glass, soft specular highlights, spring micro-interactions
   navigation, media, and input.
 - **Authentic iOS 26 Liquid Glass treatment** — backdrop blur + saturation, top
   inner highlight, soft inset shadow, specular sheen overlay, accent halo glow.
-- **Vue 3 SFCs with `<script setup lang="ts">`** — full type inference,
-  v-model, slots, emits.
+- **Vue 3 SFCs with `<script setup lang="ts">`** — full type inference, v-model,
+  slots, emits.
 - **Light & dark themes** out of the box with a single `data-theme` attribute.
 - **Themeable** — every glass, accent, blur, and radius value is a CSS custom
   property you can override at runtime.
@@ -70,29 +70,31 @@ const wifi = ref(true)
 
 ## Components
 
-| Category    | Components                                                                |
-| ----------- | ------------------------------------------------------------------------- |
-| Actions     | `LiquidButton`, `LiquidIconButton`                                        |
-| Forms       | `LiquidToggle`, `LiquidSegmented`, `LiquidSlider`, `LiquidStepper`, `LiquidInput`, `LiquidSearchBar` |
-| Display     | `LiquidCard`, `LiquidBadge`, `LiquidAvatar`, `LiquidListRow`, `LiquidProgress`, `LiquidSpinner` |
-| Overlays    | `LiquidModal`, `LiquidContextMenu`, `LiquidToast`, `LiquidNotification`, `LiquidPopover` |
-| Navigation  | `LiquidTabBar`                                                            |
-| Media       | `LiquidAudioPlayer`                                                       |
-| Input       | `LiquidKeyboard`                                                          |
+| Category   | Components                                                                                           |
+| ---------- | ---------------------------------------------------------------------------------------------------- |
+| Actions    | `LiquidButton`, `LiquidIconButton`                                                                   |
+| Forms      | `LiquidToggle`, `LiquidSegmented`, `LiquidSlider`, `LiquidStepper`, `LiquidInput`, `LiquidSearchBar` |
+| Display    | `LiquidCard`, `LiquidBadge`, `LiquidAvatar`, `LiquidListRow`, `LiquidProgress`, `LiquidSpinner`      |
+| Overlays   | `LiquidModal`, `LiquidContextMenu`, `LiquidToast`, `LiquidNotification`, `LiquidPopover`             |
+| Navigation | `LiquidTabBar`                                                                                       |
+| Media      | `LiquidAudioPlayer`                                                                                  |
+| Input      | `LiquidKeyboard`                                                                                     |
 
 ## Theming
 
 Toggle dark / light with a single attribute on `<html>`:
 
 ```html
-<html data-theme="dark"> <!-- or "light" -->
+<html data-theme="dark">
+  <!-- or "light" -->
+</html>
 ```
 
 Override any token at the root of your app:
 
 ```css
 :root {
-  --accent: #bf5af2;     /* purple */
+  --accent: #bf5af2; /* purple */
   --glass-blur: 32px;
   --glass-opacity: 1.1;
   --radius-scale: 1.1;
