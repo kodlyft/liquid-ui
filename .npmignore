@@ -1,0 +1,36 @@
+# Keep `dist/`, `src/`, `README.md`, `LICENSE` (controlled by package.json `files`).
+# Everything else in the repo stays out of the published tarball.
+
+# Source-control / CI
+.github/
+.husky/
+.git/
+.gitignore
+.editorconfig
+.prettierignore
+.prettierrc.json
+.eslintrc.cjs
+.eslintcache
+
+# Configs
+commitlint.config.cjs
+lint-staged.config.cjs
+release.config.cjs
+vite.config.ts
+vitest.config.ts
+tsconfig*.json
+
+# Showcase + design assets (not part of the library)
+Liquid UI.html
+js/
+styles/
+screenshots/
+
+# Test fixtures
+coverage/
+**/__tests__/
+**/*.test.ts
+**/*.spec.ts
+
+# Source maps stay in dist/ only
+*.log

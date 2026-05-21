@@ -1,0 +1,66 @@
+name: Release
+
+on:
+  push:
+    branches: [main, next, beta]
+
+# Required permissions for semantic-release to push commits, tags, and releases
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write # for npm provenance
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    # Skip if the commit message contains "[skip ci]" (semantic-release's own commits)
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          registry-url: 'https://registry.npmjs.org/'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Verify build output
+        run: |
+          test -f dist/liquid-ui.js || (echo "Missing ESM build" && exit 1)
+          test -f dist/liquid-ui.umd.cjs || (echo "Missing UMD build" && exit 1)
+          test -f dist/style.css || (echo "Missing styles" && exit 1)
+          test -f dist/index.d.ts || (echo "Missing types" && exit 1)
+
+      - name: Semantic Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
+        run: npx semantic-release

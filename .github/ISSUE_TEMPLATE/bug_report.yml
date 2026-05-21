@@ -1,0 +1,55 @@
+name: 🐛 Bug report
+description: Something's not working as documented
+title: 'bug: '
+labels: ['bug', 'needs-triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! A minimal reproduction (StackBlitz / CodeSandbox) gets your issue triaged 10× faster.
+
+  - type: input
+    id: version
+    attributes:
+      label: Liquid UI version
+      placeholder: '0.1.0'
+    validations:
+      required: true
+
+  - type: input
+    id: vue-version
+    attributes:
+      label: Vue version
+      placeholder: '3.4.0'
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser + OS
+      placeholder: 'Chrome 130 / macOS 14.5'
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Link to a StackBlitz/CodeSandbox, or paste minimal code that reproduces the issue.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true

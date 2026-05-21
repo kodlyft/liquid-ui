@@ -1,0 +1,177 @@
+/* ============================================================
+   Tweaks panel — global controls for the showcase
+   ============================================================ */
+
+.tweaks-panel {
+  position: absolute;
+  top: 64px;
+  right: 24px;
+  width: 280px;
+  border-radius: 20px;
+  padding: 0;
+  z-index: 40;
+  isolation: isolate;
+  overflow: hidden;
+}
+.tweaks-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 12px 18px;
+  border-bottom: 1px solid var(--glass-border);
+}
+.tweaks-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+.tweaks-close {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--glass-bg-soft);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+.tweaks-close:hover { background: var(--glass-bg-strong); color: var(--text-1); }
+
+.tweaks-body {
+  padding: 14px 16px 18px;
+}
+
+.tweak-group {
+  margin-bottom: 16px;
+}
+.tweak-group:last-child { margin-bottom: 0; }
+
+.tweak-label,
+.tweak-label-row {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+.tweak-label-row {
+  display: flex;
+  justify-content: space-between;
+}
+.tweak-value {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.tweak-swatches {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+}
+.tweak-swatch {
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    0 2px 4px rgba(0,0,0,0.24);
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s;
+  position: relative;
+}
+.tweak-swatch:hover { transform: scale(1.1); }
+.tweak-swatch.active {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    0 0 0 2.5px var(--bg-page),
+    0 0 0 4.5px currentColor;
+}
+
+.tweak-wallpapers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.tweak-wp {
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+  transition: transform 0.18s var(--ease-spring), box-shadow 0.18s;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.tweak-wp:hover { transform: scale(1.05); }
+.tweak-wp.active {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    0 0 0 2px var(--bg-page),
+    0 0 0 4px var(--accent);
+}
+
+.tweak-group input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--glass-bg-soft);
+  border-radius: 999px;
+  outline: none;
+}
+.tweak-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fff, #efefef);
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+.tweak-group input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+/* Make right panel sliders look nice too */
+.knob input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  background: var(--glass-bg-soft);
+  border-radius: 999px;
+  outline: none;
+}
+.knob input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+.knob input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+
+.app-root { position: relative; height: 100vh; }

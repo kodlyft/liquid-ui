@@ -1,0 +1,8 @@
+dist
+node_modules
+coverage
+.husky/_
+CHANGELOG.md
+pnpm-lock.yaml
+package-lock.json
+yarn.lock

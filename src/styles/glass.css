@@ -1,0 +1,126 @@
+/* ============================================================
+   Liquid Glass — the signature visual treatment
+   ============================================================ */
+
+/* Base glass — used by buttons, pills, menu cards, etc.
+   Layered effect: backdrop-blur + tinted bg + inner top highlight
+   + subtle outer border + soft inset shadow at bottom for depth. */
+.lq-glass {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    inset 0 1px 0 0 var(--glass-highlight),
+    inset 0 -1px 0 0 var(--glass-shadow-inner),
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    0 6px 16px rgba(0, 0, 0, 0.18);
+  color: var(--text-1);
+  isolation: isolate;
+}
+
+/* Strong glass — more opaque, for cards/menus that need more legibility */
+.lq-glass-strong {
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(calc(var(--glass-blur) * 1.4)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 1.4)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border-strong);
+  box-shadow:
+    inset 0 1px 0 0 var(--glass-highlight),
+    inset 0 -1px 0 0 var(--glass-shadow-inner),
+    0 2px 4px rgba(0, 0, 0, 0.14),
+    0 14px 36px rgba(0, 0, 0, 0.32);
+  color: var(--text-1);
+  isolation: isolate;
+}
+
+/* Soft glass — barely-there, used inside other glass containers */
+.lq-glass-soft {
+  background: var(--glass-bg-soft);
+  backdrop-filter: blur(calc(var(--glass-blur) * 0.6));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 0.6));
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 0 var(--glass-highlight);
+}
+
+/* Specular highlight overlay — adds a top-bright sheen.
+   Apply as ::before on a glass element. */
+.lq-specular::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.28) 0%,
+    rgba(255, 255, 255, 0.05) 30%,
+    rgba(255, 255, 255, 0) 55%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
+  mix-blend-mode: overlay;
+  opacity: 0.7;
+  z-index: 1;
+}
+.lq-specular > * {
+  position: relative;
+  z-index: 2;
+}
+
+:root[data-theme="light"] .lq-specular::before {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.2) 30%,
+    rgba(255, 255, 255, 0) 55%,
+    rgba(0, 0, 0, 0.04) 100%
+  );
+  opacity: 0.55;
+}
+
+/* Tinted glass — for colored solid buttons (blue, red, etc.) */
+.lq-tinted {
+  position: relative;
+  isolation: isolate;
+  color: #fff;
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--tint, var(--accent)) 100%, white 10%) 0%,
+    var(--tint, var(--accent)) 55%,
+    color-mix(in oklab, var(--tint, var(--accent)) 100%, black 8%) 100%);
+  border: 1px solid color-mix(in oklab, var(--tint, var(--accent)) 100%, black 14%);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.18),
+    0 2px 8px color-mix(in oklab, var(--tint, var(--accent)) 50%, transparent),
+    0 6px 18px rgba(0, 0, 0, 0.22);
+}
+
+/* Press / hover micro-interactions */
+.lq-press {
+  transition:
+    transform 0.18s var(--ease-out),
+    background-color 0.18s var(--ease-out),
+    box-shadow 0.18s var(--ease-out),
+    filter 0.18s var(--ease-out);
+  will-change: transform;
+}
+.lq-press:active {
+  transform: scale(0.96);
+  filter: brightness(0.94);
+}
+
+.lq-hoverable:hover {
+  background: var(--glass-bg-strong);
+}
+
+/* The Liquid "morph" — a flowing background that animates subtly.
+   Used for hero / wallpaper backdrops. */
+.lq-wallpaper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.6s var(--ease-out);
+}

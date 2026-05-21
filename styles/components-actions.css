@@ -1,0 +1,212 @@
+/* ============================================================
+   Component CSS — Actions
+   ============================================================ */
+
+/* ============ LiquidButton ============ */
+.lq-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  transition:
+    transform 0.16s var(--ease-out),
+    filter 0.16s var(--ease-out),
+    box-shadow 0.16s var(--ease-out);
+  isolation: isolate;
+}
+.lq-btn.is-block { width: 100%; }
+.lq-btn.is-disabled,
+.lq-btn:disabled { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
+
+/* Sizes */
+.lq-btn--sm { font-size: 13px; padding: 6px 13px; min-height: 28px; }
+.lq-btn--md { font-size: 15px; padding: 9px 18px; min-height: 36px; }
+.lq-btn--lg { font-size: 17px; padding: 12px 22px; min-height: 46px; }
+
+/* Radius */
+.lq-btn--r-pill { border-radius: calc(var(--r-pill) * var(--radius-scale)); }
+.lq-btn--r-md   { border-radius: calc(var(--r-3) * var(--radius-scale)); }
+.lq-btn--r-lg   { border-radius: calc(var(--r-4) * var(--radius-scale)); }
+
+/* Primary — accent tinted */
+.lq-btn--primary {
+  color: white;
+  --tint: var(--accent);
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--tint), white 14%) 0%,
+    var(--tint) 50%,
+    color-mix(in oklab, var(--tint), black 10%) 100%);
+  border: 1px solid color-mix(in oklab, var(--tint), black 18%);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.2),
+    0 2px 6px color-mix(in oklab, var(--tint), transparent 50%),
+    0 6px 20px rgba(0, 0, 0, 0.18);
+}
+.lq-btn--primary:hover { filter: brightness(1.05) saturate(1.05); }
+
+/* Destructive — red tinted */
+.lq-btn--destructive {
+  --tint: var(--red);
+  color: white;
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--tint), white 14%) 0%,
+    var(--tint) 50%,
+    color-mix(in oklab, var(--tint), black 12%) 100%);
+  border: 1px solid color-mix(in oklab, var(--tint), black 18%);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.22),
+    0 2px 6px color-mix(in oklab, var(--tint), transparent 50%),
+    0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* Tinted — soft accent on glass */
+.lq-btn--tinted {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in oklab, var(--accent), transparent 75%);
+  backdrop-filter: blur(20px) saturate(170%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.18),
+    0 2px 8px rgba(0, 0, 0, 0.18);
+}
+.lq-btn--tinted:hover { background: color-mix(in oklab, var(--accent), transparent 70%); }
+
+/* Secondary — pure glass */
+.lq-btn--secondary {
+  color: var(--text-1);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    inset 0 1px 0 0 var(--glass-highlight),
+    inset 0 -1px 0 0 var(--glass-shadow-inner),
+    0 2px 6px rgba(0, 0, 0, 0.14),
+    0 6px 18px rgba(0, 0, 0, 0.16);
+}
+.lq-btn--secondary:hover { background: var(--glass-bg-strong); }
+
+/* Ghost — no surface until hover */
+.lq-btn--ghost {
+  color: var(--text-1);
+  background: transparent;
+  border: 1px solid transparent;
+}
+.lq-btn--ghost:hover {
+  background: var(--glass-bg-soft);
+  border-color: var(--glass-border);
+}
+
+.lq-btn__icon { display: inline-flex; align-items: center; }
+.lq-btn__label { display: inline-flex; }
+.lq-btn__spinner {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: lq-spin 0.7s linear infinite;
+}
+
+@keyframes lq-spin { to { transform: rotate(360deg); } }
+
+/* ============ LiquidIconButton ============ */
+.lq-iconbtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.16s var(--ease-out), filter 0.16s, background 0.16s;
+  isolation: isolate;
+}
+.lq-iconbtn.is-disabled { opacity: 0.4; pointer-events: none; }
+
+.lq-iconbtn--sm { width: 32px; height: 32px; }
+.lq-iconbtn--md { width: 40px; height: 40px; }
+.lq-iconbtn--lg { width: 52px; height: 52px; }
+
+.lq-iconbtn__inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.lq-iconbtn--glass {
+  color: var(--text-1);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    inset 0 1px 0 0 var(--glass-highlight),
+    inset 0 -1px 0 0 var(--glass-shadow-inner),
+    0 2px 6px rgba(0, 0, 0, 0.18),
+    0 6px 16px rgba(0, 0, 0, 0.16);
+}
+.lq-iconbtn--glass:hover { background: var(--glass-bg-strong); }
+
+.lq-iconbtn--tinted {
+  color: white;
+  --tint: var(--accent);
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--tint), white 14%) 0%,
+    var(--tint) 55%,
+    color-mix(in oklab, var(--tint), black 10%) 100%);
+  border: 1px solid color-mix(in oklab, var(--tint), black 18%);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
+    0 2px 6px color-mix(in oklab, var(--tint), transparent 50%),
+    0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.lq-iconbtn--destructive {
+  --tint: var(--red);
+  color: white;
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--tint), white 14%) 0%,
+    var(--tint) 55%,
+    color-mix(in oklab, var(--tint), black 10%) 100%);
+  border: 1px solid color-mix(in oklab, var(--tint), black 18%);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
+    0 2px 6px color-mix(in oklab, var(--tint), transparent 50%),
+    0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.lq-iconbtn--ghost {
+  color: var(--text-1);
+  background: transparent;
+}
+.lq-iconbtn--ghost:hover { background: var(--glass-bg-soft); }
+
+.lq-iconbtn__badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--red);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-page);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}

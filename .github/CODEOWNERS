@@ -1,0 +1,12 @@
+# Global codeowners — all changes require review from the core team
+* @liquid-ui/maintainers
+
+# Release plumbing — extra eyes on automation
+/.github/workflows/  @liquid-ui/release
+/release.config.cjs  @liquid-ui/release
+/package.json        @liquid-ui/release
+
+# Public surface — design review on top of code review
+/src/index.ts        @liquid-ui/design @liquid-ui/maintainers
+/src/components/     @liquid-ui/design @liquid-ui/maintainers
+/src/styles/         @liquid-ui/design

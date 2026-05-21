@@ -1,0 +1,282 @@
+/* ============================================================
+   Component CSS — Overlays
+   ============================================================ */
+
+/* ============ LiquidModal ============ */
+.lq-modal-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 50;
+  padding: 20px;
+}
+.lq-modal {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 22px;
+  padding: 22px 18px 0;
+  text-align: center;
+  isolation: isolate;
+  position: relative;
+}
+.lq-modal__icon {
+  display: inline-flex;
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+.lq-modal__title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.lq-modal__message {
+  font-size: 13.5px;
+  color: var(--text-2);
+  margin: 0 0 18px;
+  line-height: 1.4;
+}
+.lq-modal__body { margin-bottom: 16px; }
+.lq-modal__actions {
+  display: flex;
+  align-items: stretch;
+  margin: 0 -18px;
+  border-top: 1px solid var(--glass-border);
+}
+.lq-modal__btn-sep {
+  width: 1px;
+  background: var(--glass-border);
+}
+.lq-modal__btn {
+  flex: 1;
+  padding: 13px 0;
+  font-size: 16px;
+  font-weight: 500;
+  background: transparent;
+  transition: background 0.12s;
+  border-radius: 0 0 22px 22px;
+}
+.lq-modal__btn:first-child { border-radius: 0 0 0 22px; }
+.lq-modal__btn:last-child { border-radius: 0 0 22px 0; }
+.lq-modal__btn--cancel { color: var(--text-1); }
+.lq-modal__btn--confirm { color: var(--accent); font-weight: 600; }
+.lq-modal__btn--destructive { color: var(--red); font-weight: 600; }
+.lq-modal__btn:hover { background: var(--glass-bg-soft); }
+
+.lq-modal-enter-active,
+.lq-modal-leave-active { transition: opacity 0.22s var(--ease-out); }
+.lq-modal-enter-active .lq-modal,
+.lq-modal-leave-active .lq-modal {
+  transition: transform 0.3s var(--ease-spring), opacity 0.22s var(--ease-out);
+}
+.lq-modal-enter-from { opacity: 0; }
+.lq-modal-enter-from .lq-modal { transform: scale(0.94); opacity: 0; }
+.lq-modal-leave-to { opacity: 0; }
+.lq-modal-leave-to .lq-modal { transform: scale(0.96); opacity: 0; }
+
+/* ============ LiquidContextMenu ============ */
+.lq-menu {
+  display: inline-flex;
+  flex-direction: column;
+  border-radius: 14px;
+  padding: 6px;
+  min-width: 220px;
+  isolation: isolate;
+  position: relative;
+}
+.lq-menu__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 7px;
+  color: var(--text-1);
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.1s, color 0.1s;
+}
+.lq-menu__item:hover {
+  background: var(--accent);
+  color: white;
+}
+.lq-menu__item.is-danger { color: var(--red); }
+.lq-menu__item.is-danger:hover { background: var(--red); color: white; }
+.lq-menu__item.is-disabled { opacity: 0.4; pointer-events: none; }
+.lq-menu__icon {
+  display: inline-flex;
+  color: inherit;
+  opacity: 0.85;
+}
+.lq-menu__label { flex: 1; }
+.lq-menu__divider {
+  height: 1px;
+  margin: 4px 0;
+  background: var(--glass-border);
+}
+
+/* ============ LiquidToast ============ */
+.lq-toast {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  min-width: 240px;
+  max-width: 380px;
+  isolation: isolate;
+  position: relative;
+}
+.lq-toast--glass {
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(calc(var(--glass-blur) * 1.4)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 1.4)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border-strong);
+  color: var(--text-1);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    inset 0 -1px 0 var(--glass-shadow-inner),
+    0 14px 36px rgba(0,0,0,0.32);
+}
+.lq-toast--success { background: var(--green); color: white; }
+.lq-toast--warning { background: var(--orange); color: white; }
+.lq-toast--danger  { background: var(--red);    color: white; }
+
+.lq-toast__icon { display: inline-flex; flex-shrink: 0; }
+.lq-toast__body { flex: 1; min-width: 0; }
+.lq-toast__title { font-size: 14px; font-weight: 600; line-height: 1.2; }
+.lq-toast__desc {
+  font-size: 12.5px;
+  color: inherit;
+  opacity: 0.78;
+  margin-top: 2px;
+  line-height: 1.3;
+}
+.lq-toast__close {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.lq-toast__close:hover { background: rgba(255,255,255,0.22); }
+
+.lq-toast-enter-active,
+.lq-toast-leave-active { transition: all 0.32s var(--ease-spring); }
+.lq-toast-enter-from { transform: translateY(20px) scale(0.92); opacity: 0; }
+.lq-toast-leave-to   { transform: translateY(-10px) scale(0.96); opacity: 0; }
+
+/* ============ LiquidNotification ============ */
+.lq-notif {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 22px;
+  padding: 12px 14px;
+  isolation: isolate;
+  position: relative;
+}
+.lq-notif.is-grouped {
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 -4px 0 -2px var(--glass-bg-strong),
+    0 -8px 0 -4px var(--glass-bg-soft),
+    0 14px 32px rgba(0,0,0,0.32);
+}
+.lq-notif__head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 6px;
+}
+.lq-notif__app {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+}
+.lq-notif__app-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.lq-notif__time {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-3);
+}
+.lq-notif__body {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.lq-notif__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.lq-notif__text { flex: 1; min-width: 0; }
+.lq-notif__title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-1);
+}
+.lq-notif__message {
+  font-size: 13.5px;
+  color: var(--text-2);
+  margin-top: 1px;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.lq-notif__stack {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-3);
+  text-align: center;
+}
+
+/* ============ LiquidPopover ============ */
+.lq-popover-host { position: relative; display: inline-flex; }
+.lq-popover {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-size: 13px;
+  white-space: nowrap;
+  isolation: isolate;
+  z-index: 20;
+}
+.lq-popover--bottom {
+  bottom: auto;
+  top: calc(100% + 8px);
+}
+.lq-pop-enter-active,
+.lq-pop-leave-active { transition: opacity 0.18s, transform 0.18s var(--ease-spring); }
+.lq-pop-enter-from { opacity: 0; transform: translateX(-50%) scale(0.92); }
+.lq-pop-leave-to   { opacity: 0; transform: translateX(-50%) scale(0.96); }

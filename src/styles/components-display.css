@@ -1,0 +1,285 @@
+/* ============================================================
+   Component CSS — Display
+   ============================================================ */
+
+/* ============ LiquidCard ============ */
+.lq-card {
+  position: relative;
+  isolation: isolate;
+  color: var(--text-1);
+}
+.lq-card--r-md { border-radius: 12px; }
+.lq-card--r-lg { border-radius: 20px; }
+.lq-card--r-xl { border-radius: 28px; }
+
+.lq-card--p-none { padding: 0; }
+.lq-card--p-sm   { padding: 12px; }
+.lq-card--p-md   { padding: 18px; }
+.lq-card--p-lg   { padding: 26px; }
+
+.lq-card--glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    inset 0 -1px 0 var(--glass-shadow-inner);
+}
+.lq-card--glass.is-elevated {
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    inset 0 -1px 0 var(--glass-shadow-inner),
+    0 4px 14px rgba(0,0,0,0.18),
+    0 18px 40px rgba(0,0,0,0.22);
+}
+
+.lq-card--strong {
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border-strong);
+  backdrop-filter: blur(calc(var(--glass-blur) * 1.4)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 1.4)) saturate(var(--glass-saturate));
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    inset 0 -1px 0 var(--glass-shadow-inner),
+    0 8px 24px rgba(0,0,0,0.28),
+    0 24px 60px rgba(0,0,0,0.32);
+}
+
+.lq-card--tinted {
+  color: white;
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--accent), white 12%) 0%,
+    var(--accent) 100%);
+  border: 1px solid color-mix(in oklab, var(--accent), black 14%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    0 4px 18px color-mix(in oklab, var(--accent), transparent 60%),
+    0 14px 36px rgba(0,0,0,0.18);
+}
+
+.lq-card--solid {
+  background: var(--surface-2);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+:root[data-theme="light"] .lq-card--solid {
+  border-color: rgba(0,0,0,0.06);
+}
+
+/* ============ LiquidBadge ============ */
+.lq-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.lq-badge--sm { font-size: 11px; padding: 2px 8px; min-height: 18px; }
+.lq-badge--md { font-size: 12.5px; padding: 3px 10px; min-height: 22px; }
+
+.lq-badge--glass {
+  color: var(--text-1);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(18px) saturate(170%);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+.lq-badge--accent { color: white; background: var(--accent); }
+.lq-badge--success { color: white; background: var(--green); }
+.lq-badge--warning { color: white; background: var(--orange); }
+.lq-badge--danger { color: white; background: var(--red); }
+
+.lq-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.lq-badge.is-dot { padding: 4px 10px 4px 8px; }
+.lq-badge__icon { display: inline-flex; }
+
+/* ============ LiquidAvatar ============ */
+.lq-avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: visible;
+  background: rgba(255,255,255,0.06);
+}
+.lq-avatar--circle { border-radius: 999px; }
+.lq-avatar--rounded { border-radius: 24%; }
+
+.lq-avatar__img,
+.lq-avatar__initials {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: white;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -1px 0 rgba(0,0,0,0.15);
+}
+.lq-avatar__status {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 30%;
+  height: 30%;
+  min-width: 8px;
+  min-height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-page);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+}
+.lq-avatar__status--online { background: var(--green); }
+.lq-avatar__status--away { background: var(--orange); }
+.lq-avatar__status--busy { background: var(--red); }
+.lq-avatar__status--offline { background: var(--text-3); }
+.lq-avatar__badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: var(--red);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-page);
+}
+
+/* ============ LiquidListRow ============ */
+.lq-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  position: relative;
+  color: var(--text-1);
+  cursor: default;
+}
+.lq-row.is-interactive { cursor: pointer; transition: background 0.12s; }
+.lq-row.is-interactive:hover { background: var(--glass-bg-soft); }
+.lq-row.has-divider:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 0;
+  height: 1px;
+  background: var(--glass-border);
+}
+
+.lq-row__iconwrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.lq-row__main { flex: 1; min-width: 0; }
+.lq-row__title {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.lq-row__subtitle {
+  font-size: 13px;
+  color: var(--text-3);
+  margin-top: 2px;
+  line-height: 1.2;
+}
+.lq-row__value {
+  color: var(--text-3);
+  font-size: 14px;
+}
+.lq-row__chevron {
+  color: var(--text-3);
+  display: inline-flex;
+  margin-left: 4px;
+}
+
+/* ============ LiquidProgress ============ */
+.lq-progress-wrap { width: 100%; min-width: 200px; }
+.lq-progress-label {
+  font-size: 13px;
+  color: var(--text-2);
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lq-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.15);
+}
+:root[data-theme="light"] .lq-progress { background: rgba(0,0,0,0.1); }
+.lq-progress--sm { height: 4px; }
+.lq-progress--md { height: 6px; }
+
+.lq-progress__fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.3s var(--ease-out);
+  box-shadow: 0 0 8px color-mix(in oklab, var(--p-color, white), transparent 50%);
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--p-color, white), white 12%),
+    var(--p-color, white));
+}
+.lq-progress--accent { --p-color: var(--accent); }
+.lq-progress--success { --p-color: var(--green); }
+.lq-progress--warning { --p-color: var(--orange); }
+.lq-progress--white { --p-color: white; }
+
+.lq-progress__indet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  border-radius: 999px;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--p-color, white) 50%,
+    transparent);
+  animation: lq-indet 1.4s linear infinite;
+}
+@keyframes lq-indet {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(280%); }
+}
+
+/* ============ LiquidSpinner ============ */
+.lq-spinner {
+  display: inline-flex;
+  animation: lq-spin 0.8s linear infinite;
+}
