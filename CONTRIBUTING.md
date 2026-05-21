@@ -40,7 +40,8 @@ npm run build       # Production library bundle
 
 - **TypeScript with `<script setup lang="ts">`.** Prefer `withDefaults` +
   `defineProps<Props>` over the runtime form.
-- **Type emits explicitly:** `defineEmits<{ (e: 'click', event: MouseEvent): void }>()`.
+- **Type emits explicitly:**
+  `defineEmits<{ (e: 'click', event: MouseEvent): void }>()`.
 - **CSS class naming:** `lq-<component>__<element>--<modifier>`. Component
   modifiers go on the root; never style your component from the outside.
 - **No magic numbers** in CSS — use the tokens in `src/styles/tokens.css`.
@@ -70,8 +71,8 @@ docs(readme): add theming section
 test(modal): cover destructive confirm path
 ```
 
-**Breaking changes** trigger a major-version bump — add `!` after the type or
-a `BREAKING CHANGE:` footer:
+**Breaking changes** trigger a major-version bump — add `!` after the type or a
+`BREAKING CHANGE:` footer:
 
 ```
 feat(card)!: rename `padded` prop to `padding`

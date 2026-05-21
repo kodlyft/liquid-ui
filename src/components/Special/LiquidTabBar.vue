@@ -27,12 +27,13 @@ export interface TabBarItem<V> {
   badge?: string | number
 }
 
-interface Props {
-  modelValue: T
-  items: TabBarItem<T>[]
-  floating?: boolean
-}
-
-withDefaults(defineProps<Props>(), { floating: true })
+withDefaults(
+  defineProps<{
+    modelValue: T
+    items: TabBarItem<T>[]
+    floating?: boolean
+  }>(),
+  { floating: true },
+)
 defineEmits<{ (e: 'update:modelValue', v: T): void }>()
 </script>

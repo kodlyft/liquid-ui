@@ -2,22 +2,12 @@
   <div class="lq-kb lq-glass-strong">
     <template v-if="layout === 'letters'">
       <div class="lq-kb__row">
-        <button
-          v-for="k in row1"
-          :key="k"
-          class="lq-kb__key lq-press"
-          @click="$emit('key', k)"
-        >
+        <button v-for="k in row1" :key="k" class="lq-kb__key lq-press" @click="$emit('key', k)">
           {{ display(k) }}
         </button>
       </div>
       <div class="lq-kb__row lq-kb__row--mid">
-        <button
-          v-for="k in row2"
-          :key="k"
-          class="lq-kb__key lq-press"
-          @click="$emit('key', k)"
-        >
+        <button v-for="k in row2" :key="k" class="lq-kb__key lq-press" @click="$emit('key', k)">
           {{ display(k) }}
         </button>
       </div>
@@ -28,12 +18,7 @@
         >
           <span v-html="iconSvg('shift', 18)" />
         </button>
-        <button
-          v-for="k in row3"
-          :key="k"
-          class="lq-kb__key lq-press"
-          @click="$emit('key', k)"
-        >
+        <button v-for="k in row3" :key="k" class="lq-kb__key lq-press" @click="$emit('key', k)">
           {{ display(k) }}
         </button>
         <button class="lq-kb__key lq-kb__back lq-press" @click="$emit('key', 'backspace')">

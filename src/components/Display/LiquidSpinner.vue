@@ -1,7 +1,15 @@
 <template>
   <span class="lq-spinner" :style="rootStyle">
     <svg viewBox="0 0 24 24" :width="size" :height="size">
-      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.4" fill="none" opacity="0.18" />
+      <circle
+        cx="12"
+        cy="12"
+        r="9"
+        stroke="currentColor"
+        stroke-width="2.4"
+        fill="none"
+        opacity="0.18"
+      />
       <path
         d="M12 3a9 9 0 0 1 9 9"
         stroke="currentColor"

@@ -23,17 +23,18 @@ export interface SegmentedOption<V> {
   icon?: IconName
 }
 
-interface Props {
-  modelValue: T
-  options: SegmentedOption<T>[]
-  size?: 'sm' | 'md'
-  variant?: 'glass' | 'inline'
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  size: 'md',
-  variant: 'glass',
-})
+const props = withDefaults(
+  defineProps<{
+    modelValue: T
+    options: SegmentedOption<T>[]
+    size?: 'sm' | 'md'
+    variant?: 'glass' | 'inline'
+  }>(),
+  {
+    size: 'md',
+    variant: 'glass',
+  },
+)
 
 defineEmits<{ (e: 'update:modelValue', value: T): void }>()
 
