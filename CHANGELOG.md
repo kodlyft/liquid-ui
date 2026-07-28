@@ -1,3 +1,7 @@
+## <small>1.0.2 (2026-07-28)</small>
+
+* refactor: standardize comment formatting and improve Liquid UI components ([6aab535](https://github.com/kodlyft/liquid-ui/commit/6aab535))
+
 ## <small>1.0.1 (2026-05-21)</small>
 
 * refactor: update theme to light mode and enhance preview functionality with new animations ([4caa93b](https://github.com/kodlyft/liquid-ui/commit/4caa93b))
