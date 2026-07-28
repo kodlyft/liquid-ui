@@ -1,8 +1,8 @@
 /* ============================================================
-   Liquid Glass — the signature visual treatment
+   Liquid Glass -- the signature visual treatment
    ============================================================ */
 
-/* Base glass — used by buttons, pills, menu cards, etc.
+/* Base glass -- used by buttons, pills, menu cards, etc.
    Layered effect: backdrop-blur + tinted bg + inner top highlight
    + subtle outer border + soft inset shadow at bottom for depth. */
 .lq-glass {
@@ -20,7 +20,7 @@
   isolation: isolate;
 }
 
-/* Strong glass — more opaque, for cards/menus that need more legibility */
+/* Strong glass -- more opaque, for cards/menus that need more legibility */
 .lq-glass-strong {
   background: var(--glass-bg-strong);
   backdrop-filter: blur(calc(var(--glass-blur) * 1.4)) saturate(var(--glass-saturate));
@@ -35,7 +35,7 @@
   isolation: isolate;
 }
 
-/* Soft glass — barely-there, used inside other glass containers */
+/* Soft glass -- barely-there, used inside other glass containers */
 .lq-glass-soft {
   background: var(--glass-bg-soft);
   backdrop-filter: blur(calc(var(--glass-blur) * 0.6));
@@ -44,10 +44,10 @@
   box-shadow: inset 0 1px 0 0 var(--glass-highlight);
 }
 
-/* Specular highlight overlay — adds a top-bright sheen.
+/* Specular highlight overlay -- adds a top-bright sheen.
    Apply as ::before on a glass element. */
 .lq-specular::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
@@ -68,7 +68,7 @@
   z-index: 2;
 }
 
-:root[data-theme="light"] .lq-specular::before {
+:root[data-theme='light'] .lq-specular::before {
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.6) 0%,
@@ -79,15 +79,17 @@
   opacity: 0.55;
 }
 
-/* Tinted glass — for colored solid buttons (blue, red, etc.) */
+/* Tinted glass -- for colored solid buttons (blue, red, etc.) */
 .lq-tinted {
   position: relative;
   isolation: isolate;
   color: #fff;
-  background: linear-gradient(180deg,
+  background: linear-gradient(
+    180deg,
     color-mix(in oklab, var(--tint, var(--accent)) 100%, white 10%) 0%,
     var(--tint, var(--accent)) 55%,
-    color-mix(in oklab, var(--tint, var(--accent)) 100%, black 8%) 100%);
+    color-mix(in oklab, var(--tint, var(--accent)) 100%, black 8%) 100%
+  );
   border: 1px solid color-mix(in oklab, var(--tint, var(--accent)) 100%, black 14%);
   box-shadow:
     inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
@@ -114,7 +116,7 @@
   background: var(--glass-bg-strong);
 }
 
-/* The Liquid "morph" — a flowing background that animates subtly.
+/* The Liquid "morph" -- a flowing background that animates subtly.
    Used for hero / wallpaper backdrops. */
 .lq-wallpaper {
   position: fixed;

@@ -24,6 +24,7 @@ import LiquidSpinner from './components/Display/LiquidSpinner.vue'
 // Overlays
 import LiquidModal from './components/Overlays/LiquidModal.vue'
 import LiquidContextMenu from './components/Overlays/LiquidContextMenu.vue'
+import LiquidContextMenuTrigger from './components/Overlays/LiquidContextMenuTrigger.vue'
 import LiquidToast from './components/Overlays/LiquidToast.vue'
 import LiquidNotification from './components/Overlays/LiquidNotification.vue'
 import LiquidPopover from './components/Overlays/LiquidPopover.vue'
@@ -35,6 +36,7 @@ import LiquidKeyboard from './components/Special/LiquidKeyboard.vue'
 
 // Utilities + types
 export { iconSvg, type IconName } from './icons'
+export type { MenuItem } from './types/menu'
 
 export {
   LiquidButton,
@@ -53,6 +55,7 @@ export {
   LiquidSpinner,
   LiquidModal,
   LiquidContextMenu,
+  LiquidContextMenuTrigger,
   LiquidToast,
   LiquidNotification,
   LiquidPopover,
@@ -78,6 +81,7 @@ const components = {
   LiquidSpinner,
   LiquidModal,
   LiquidContextMenu,
+  LiquidContextMenuTrigger,
   LiquidToast,
   LiquidNotification,
   LiquidPopover,

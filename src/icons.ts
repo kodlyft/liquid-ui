@@ -1,5 +1,5 @@
 // ============================================================
-// Liquid UI — icon registry
+// Liquid UI -- icon registry
 // SF Symbols-style monochrome icons. Use iconSvg(name) to render.
 // ============================================================
 

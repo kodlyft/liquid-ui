@@ -1,5 +1,5 @@
 /* ============================================================
-   Liquid UI — Design Tokens (iOS 26 Liquid Glass)
+   Liquid UI -- Design Tokens (iOS 26 Liquid Glass)
    ============================================================ */
 
 :root {
@@ -51,7 +51,7 @@
   --sp-7: 32px;
   --sp-8: 40px;
 
-  /* ---- Glass — tunable via Tweaks ---- */
+  /* ---- Glass -- tunable via Tweaks ---- */
   --glass-blur: 24px;
   --glass-saturate: 160%;
   --glass-opacity: 1;

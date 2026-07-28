@@ -1,6 +1,6 @@
 ;(function () {
   // ============================================================
-  // Showcase shell — sidebar nav + main canvas + props playground
+  // Showcase shell -- sidebar nav + main canvas + props playground
   // Mounts every page from window.LiquidDocs
   // ============================================================
 
@@ -131,7 +131,7 @@
         continue
       }
       if (inTag && inAttrVal === null && /[:@\w-]/.test(c)) {
-        // attribute name? — preceded by whitespace
+        // attribute name? -- preceded by whitespace
         const prev = code[i - 1]
         if (prev && /\s/.test(prev)) {
           let j = i
@@ -143,7 +143,7 @@
           }
         }
       }
-      // Outside tag — strings
+      // Outside tag -- strings
       if (!inTag && (c === '"' || c === "'" || c === '`')) {
         const q = c
         let j = i + 1
@@ -327,17 +327,31 @@
               () => 'Open dialog',
             ),
           ]),
-          h(window.LiquidModal, {
-            modelValue: open.value,
-            'onUpdate:modelValue': (v) => (open.value = v),
-            title: props.knobs.title,
-            message: props.knobs.message,
-            confirmText: props.knobs.confirmText,
-            cancelText: props.knobs.cancelText,
-            destructive: props.knobs.destructive,
-            icon: props.knobs.icon,
-            iconColor: props.knobs.destructive ? 'var(--red)' : 'var(--accent)',
-          }),
+          h(
+            window.LiquidModal,
+            {
+              modelValue: open.value,
+              'onUpdate:modelValue': (v) => (open.value = v),
+              title: props.knobs.title,
+              message: props.knobs.message,
+              confirmText: props.knobs.confirmText,
+              cancelText: props.knobs.cancelText,
+              destructive: props.knobs.destructive,
+              icon: props.knobs.icon,
+              iconColor: props.knobs.destructive ? 'var(--red)' : 'var(--accent)',
+              size: props.knobs.size,
+              actions: props.knobs.actions,
+              dismissible: props.knobs.dismissible,
+            },
+            props.knobs.size !== 'alert'
+              ? () =>
+                  h(
+                    'p',
+                    { style: 'font-size:13px;color:var(--text-2)' },
+                    'Body content goes in the default slot. Wider sizes left-align it and let it scroll.',
+                  )
+              : undefined,
+          ),
         ])
     },
   })
@@ -364,6 +378,54 @@
             items,
             onSelect: (i) => (lastAction.value = i.label),
           }),
+          lastAction.value
+            ? h(
+                'div',
+                { style: 'margin-top:14px;font-size:12px;color:var(--text-3);text-align:center' },
+                'Selected: ' + lastAction.value,
+              )
+            : null,
+        ])
+    },
+  })
+
+  const MenuTriggerDemo = defineComponent({
+    props: ['knobs'],
+    setup() {
+      const items = [
+        { label: 'Actions', heading: true },
+        { key: 'edit', label: 'Edit', icon: 'edit', shortcut: 'Ctrl+E' },
+        { key: 'duplicate', label: 'Duplicate', icon: 'duplicate', shortcut: 'Ctrl+D' },
+        {
+          key: 'insert',
+          label: 'Insert',
+          children: [
+            { key: 'insert:text', label: 'Text' },
+            { key: 'insert:image', label: 'Image' },
+            { key: 'insert:table', label: 'Table' },
+          ],
+        },
+        { divider: true },
+        { key: 'delete', label: 'Delete', icon: 'trash', danger: true, shortcut: 'Del' },
+      ]
+      const lastAction = ref('')
+      return () =>
+        h('div', null, [
+          h(
+            window.LiquidContextMenuTrigger,
+            { items, onSelect: (i) => (lastAction.value = i.label) },
+            () =>
+              h(
+                'div',
+                {
+                  class: 'lq-glass',
+                  style:
+                    'display:grid;place-items:center;height:170px;border-radius:16px;' +
+                    'font-size:13px;color:var(--text-3);user-select:none;cursor:context-menu',
+                },
+                'Right-click anywhere in this area',
+              ),
+          ),
           lastAction.value
             ? h(
                 'div',
@@ -426,7 +488,7 @@
   })
 
   // ---------- Variant cell renderer ----------
-  // Interactive — keeps its own modelValue state so the demo flips on click.
+  // Interactive -- keeps its own modelValue state so the demo flips on click.
   const VariantCell = defineComponent({
     props: ['page', 'variant'],
     setup(props) {
@@ -553,10 +615,11 @@
       return () => {
         const page = props.page
 
-        // Demo body — either a custom component or a dynamic template
+        // Demo body -- either a custom component or a dynamic template
         let demoBody
         if (page.custom === 'modal') demoBody = h(ModalDemo, { knobs: knobValues })
         else if (page.custom === 'menu') demoBody = h(MenuDemo, { knobs: knobValues })
+        else if (page.custom === 'menuTrigger') demoBody = h(MenuTriggerDemo, { knobs: knobValues })
         else if (page.custom === 'toast') demoBody = h(ToastDemo, { knobs: knobValues })
         else if (page.custom === 'tabbar')
           demoBody = h(TabBarDemo, { knobs: knobValues, onUpdate: setKnob })
@@ -627,7 +690,7 @@
   const PageProps = defineComponent({
     props: ['page'],
     setup(props) {
-      // Reactive ref shared with Page — for simplicity we look it up via a global
+      // Reactive ref shared with Page -- for simplicity we look it up via a global
       // store, but a cleaner approach is to lift state. We'll do this in the App.
       return () => null
     },

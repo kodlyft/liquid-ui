@@ -1,5 +1,5 @@
 /* ============================================================
-   Component CSS — Forms
+   Component CSS -- Forms
    ============================================================ */
 
 /* ============ LiquidToggle ============ */
@@ -166,7 +166,7 @@
   display: inline-flex;
 }
 
-/* Inline variant — TabBar-style with icons stacked */
+/* Inline variant -- TabBar-style with icons stacked */
 .lq-seg--inline {
   background: transparent;
   border: none;

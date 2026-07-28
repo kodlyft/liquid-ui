@@ -1,5 +1,5 @@
 /* ============================================================
-   Component CSS — Actions
+   Component CSS -- Actions
    ============================================================ */
 
 /* ============ LiquidButton ============ */
@@ -59,7 +59,7 @@
   border-radius: calc(var(--r-4) * var(--radius-scale));
 }
 
-/* Primary — accent tinted */
+/* Primary -- accent tinted */
 .lq-btn--primary {
   color: white;
   --tint: var(--accent);
@@ -80,7 +80,7 @@
   filter: brightness(1.05) saturate(1.05);
 }
 
-/* Destructive — red tinted */
+/* Destructive -- red tinted */
 .lq-btn--destructive {
   --tint: var(--red);
   color: white;
@@ -98,7 +98,7 @@
     0 6px 20px rgba(0, 0, 0, 0.18);
 }
 
-/* Tinted — soft accent on glass */
+/* Tinted -- soft accent on glass */
 .lq-btn--tinted {
   color: var(--accent);
   background: var(--accent-soft);
@@ -113,7 +113,7 @@
   background: color-mix(in oklab, var(--accent), transparent 70%);
 }
 
-/* Secondary — pure glass */
+/* Secondary -- pure glass */
 .lq-btn--secondary {
   color: var(--text-1);
   background: var(--glass-bg);
@@ -130,7 +130,7 @@
   background: var(--glass-bg-strong);
 }
 
-/* Ghost — no surface until hover */
+/* Ghost -- no surface until hover */
 .lq-btn--ghost {
   color: var(--text-1);
   background: transparent;

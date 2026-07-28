@@ -1,5 +1,5 @@
 // ============================================================
-// Wallpapers — clean default plus optional rich backdrops for glass refraction
+// Wallpapers -- clean default plus optional rich backdrops for glass refraction
 // ============================================================
 
 window.Wallpapers = [

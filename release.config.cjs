@@ -7,7 +7,7 @@
  * GitHub release, and commits the version + changelog back to the repo.
  *
  * Required CI secrets:
- *   - RELEASE_TOKEN (classic PAT with repo scope from an admin account — bypasses branch protection)
+ *   - RELEASE_TOKEN (classic PAT with repo scope from an admin account -- bypasses branch protection)
  *   - NPM_TOKEN    (npm automation token with publish access)
  */
 module.exports = {

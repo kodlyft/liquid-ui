@@ -152,7 +152,7 @@
     },
   })
 
-  // ---------- MainCanvas — page header + demo + variants + code ----------
+  // ---------- MainCanvas -- page header + demo + variants + code ----------
   const MainCanvas = defineComponent({
     props: ['page', 'knobs', 'previewUpdating'],
     emits: ['knob-change'],
@@ -244,7 +244,7 @@
     },
   })
 
-  // ---------- RightPanel — props playground ----------
+  // ---------- RightPanel -- props playground ----------
   const RightPanel = defineComponent({
     props: ['page', 'knobs'],
     emits: ['knob-change'],
@@ -261,7 +261,7 @@
     },
   })
 
-  // ---------- TopBar — theme toggle + wallpaper cycle + tweaks open ----------
+  // ---------- TopBar -- theme toggle + wallpaper cycle + tweaks open ----------
   const TopBar = defineComponent({
     props: ['tweaks', 'tweaksOpen'],
     emits: ['theme', 'cycleWallpaper', 'tweaks'],
@@ -293,7 +293,7 @@
     },
   })
 
-  // ---------- TweaksPanel — toolbar for the whole showcase ----------
+  // ---------- TweaksPanel -- toolbar for the whole showcase ----------
   const TweaksPanel = defineComponent({
     props: ['tweaks'],
     emits: ['close'],
@@ -427,6 +427,7 @@
       'LiquidSpinner',
       'LiquidModal',
       'LiquidContextMenu',
+      'LiquidContextMenuTrigger',
       'LiquidToast',
       'LiquidNotification',
       'LiquidPopover',

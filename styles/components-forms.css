@@ -1,5 +1,5 @@
 /* ============================================================
-   Component CSS — Forms
+   Component CSS -- Forms
    ============================================================ */
 
 /* ============ LiquidToggle ============ */
@@ -12,10 +12,19 @@
   background: transparent;
   flex-shrink: 0;
 }
-.lq-toggle.is-disabled { opacity: 0.4; cursor: not-allowed; }
+.lq-toggle.is-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 
-.lq-toggle--sm { width: 42px; height: 26px; }
-.lq-toggle--md { width: 52px; height: 32px; }
+.lq-toggle--sm {
+  width: 42px;
+  height: 26px;
+}
+.lq-toggle--md {
+  width: 52px;
+  height: 32px;
+}
 
 .lq-toggle__track {
   position: absolute;
@@ -28,8 +37,11 @@
   box-shadow:
     inset 0 1px 0 var(--glass-highlight),
     inset 0 -1px 0 var(--glass-shadow-inner),
-    inset 0 2px 4px rgba(0,0,0,0.08);
-  transition: background 0.28s var(--ease-out), border-color 0.28s var(--ease-out), box-shadow 0.28s var(--ease-out);
+    inset 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition:
+    background 0.28s var(--ease-out),
+    border-color 0.28s var(--ease-out),
+    box-shadow 0.28s var(--ease-out);
 }
 .lq-toggle__thumb {
   position: absolute;
@@ -44,7 +56,9 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.9),
     0 2px 4px rgba(0, 0, 0, 0.18),
     0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.32s var(--ease-spring), box-shadow 0.28s;
+  transition:
+    transform 0.32s var(--ease-spring),
+    box-shadow 0.28s;
 }
 .lq-toggle--sm .lq-toggle__thumb {
   width: 20px;
@@ -55,20 +69,34 @@
   background: var(--tg-color, var(--green));
   border-color: color-mix(in oklab, var(--tg-color, var(--green)), black 18%);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.4),
-    inset 0 -1px 0 rgba(0,0,0,0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
     0 0 16px color-mix(in oklab, var(--tg-color, var(--green)), transparent 65%);
 }
 /* md: 52 - 26 - 6 = 20 */
-.lq-toggle--md.is-on .lq-toggle__thumb { transform: translateX(20px); }
+.lq-toggle--md.is-on .lq-toggle__thumb {
+  transform: translateX(20px);
+}
 /* sm: 42 - 20 - 6 = 16 */
-.lq-toggle--sm.is-on .lq-toggle__thumb { transform: translateX(16px); }
+.lq-toggle--sm.is-on .lq-toggle__thumb {
+  transform: translateX(16px);
+}
 
-.lq-toggle--green   { --tg-color: var(--green); }
-.lq-toggle--accent  { --tg-color: var(--accent); }
-.lq-toggle--orange  { --tg-color: var(--orange); }
-.lq-toggle--red     { --tg-color: var(--red); }
-.lq-toggle--purple  { --tg-color: var(--purple); }
+.lq-toggle--green {
+  --tg-color: var(--green);
+}
+.lq-toggle--accent {
+  --tg-color: var(--accent);
+}
+.lq-toggle--orange {
+  --tg-color: var(--orange);
+}
+.lq-toggle--red {
+  --tg-color: var(--red);
+}
+.lq-toggle--purple {
+  --tg-color: var(--purple);
+}
 
 /* ============ LiquidSegmented ============ */
 .lq-seg {
@@ -85,10 +113,15 @@
   box-shadow:
     inset 0 1px 0 var(--glass-highlight),
     inset 0 -1px 0 var(--glass-shadow-inner),
-    0 4px 12px rgba(0,0,0,0.12);
+    0 4px 12px rgba(0, 0, 0, 0.12);
 }
-.lq-seg--md { font-size: 13.5px; }
-.lq-seg--sm { font-size: 12.5px; padding: 2px; }
+.lq-seg--md {
+  font-size: 13.5px;
+}
+.lq-seg--sm {
+  font-size: 12.5px;
+  padding: 2px;
+}
 
 .lq-seg__opt {
   flex: 1 1 0;
@@ -106,7 +139,10 @@
   z-index: 2;
   white-space: nowrap;
 }
-.lq-seg__opt.is-active { color: var(--text-1); font-weight: 600; }
+.lq-seg__opt.is-active {
+  color: var(--text-1);
+  font-weight: 600;
+}
 .lq-seg__indicator {
   position: absolute;
   top: 3px;
@@ -119,14 +155,18 @@
   box-shadow:
     inset 0 1px 0 var(--glass-highlight),
     inset 0 -1px 0 var(--glass-shadow-inner),
-    0 2px 8px rgba(0,0,0,0.18);
-  transition: transform 0.32s var(--ease-spring), width 0.32s var(--ease-spring);
+    0 2px 8px rgba(0, 0, 0, 0.18);
+  transition:
+    transform 0.32s var(--ease-spring),
+    width 0.32s var(--ease-spring);
   pointer-events: none;
   z-index: 1;
 }
-.lq-seg__icon { display: inline-flex; }
+.lq-seg__icon {
+  display: inline-flex;
+}
 
-/* Inline variant — TabBar-style with icons stacked */
+/* Inline variant -- TabBar-style with icons stacked */
 .lq-seg--inline {
   background: transparent;
   border: none;
@@ -144,8 +184,13 @@
 .lq-seg--inline .lq-seg__opt.is-active {
   color: var(--accent);
 }
-.lq-seg--inline .lq-seg__opt .lq-seg__icon svg { width: 22px; height: 22px; }
-.lq-seg--inline .lq-seg__indicator { display: none; }
+.lq-seg--inline .lq-seg__opt .lq-seg__icon svg {
+  width: 22px;
+  height: 22px;
+}
+.lq-seg--inline .lq-seg__indicator {
+  display: none;
+}
 
 /* ============ LiquidSlider ============ */
 .lq-slider {
@@ -162,12 +207,18 @@
   box-shadow:
     inset 0 1px 0 var(--glass-highlight),
     inset 0 -1px 0 var(--glass-shadow-inner),
-    0 4px 12px rgba(0,0,0,0.12);
+    0 4px 12px rgba(0, 0, 0, 0.12);
   color: var(--text-2);
 }
-.lq-slider.is-disabled { opacity: 0.45; pointer-events: none; }
+.lq-slider.is-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
 
-.lq-slider__icon { display: inline-flex; opacity: 0.85; }
+.lq-slider__icon {
+  display: inline-flex;
+  opacity: 0.85;
+}
 .lq-slider__value {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -183,9 +234,11 @@
   background: rgba(255, 255, 255, 0.12);
   border-radius: 999px;
   cursor: pointer;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,0.18);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.18);
 }
-:root[data-theme="light"] .lq-slider__track { background: rgba(0,0,0,0.12); }
+:root[data-theme='light'] .lq-slider__track {
+  background: rgba(0, 0, 0, 0.12);
+}
 
 .lq-slider__fill {
   position: absolute;
@@ -202,20 +255,30 @@
   height: 18px;
   border-radius: 50%;
   background: linear-gradient(180deg, #fff, #efefef);
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   transform: translate(-50%, -50%);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.9),
-    0 2px 4px rgba(0,0,0,0.2),
-    0 4px 10px rgba(0,0,0,0.22);
-  transition: transform 0.18s var(--ease-spring), left 0.06s linear;
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    0 4px 10px rgba(0, 0, 0, 0.22);
+  transition:
+    transform 0.18s var(--ease-spring),
+    left 0.06s linear;
   pointer-events: none;
 }
-.lq-slider__track:hover .lq-slider__thumb { transform: translate(-50%, -50%) scale(1.08); }
+.lq-slider__track:hover .lq-slider__thumb {
+  transform: translate(-50%, -50%) scale(1.08);
+}
 
-.lq-slider--accent { --sl-color: var(--accent); }
-.lq-slider--white  { --sl-color: white; }
-.lq-slider--green  { --sl-color: var(--green); }
+.lq-slider--accent {
+  --sl-color: var(--accent);
+}
+.lq-slider--white {
+  --sl-color: white;
+}
+.lq-slider--green {
+  --sl-color: var(--green);
+}
 
 /* ============ LiquidStepper ============ */
 .lq-stepper {
@@ -238,8 +301,13 @@
   cursor: pointer;
   transition: background 0.12s;
 }
-.lq-stepper__btn:hover { background: var(--glass-bg-strong); }
-.lq-stepper__btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.lq-stepper__btn:hover {
+  background: var(--glass-bg-strong);
+}
+.lq-stepper__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 .lq-stepper__divider {
   width: 1px;
   background: var(--glass-border);
@@ -261,15 +329,29 @@
   box-shadow:
     inset 0 1px 0 var(--glass-highlight),
     inset 0 -1px 0 var(--glass-shadow-inner),
-    0 2px 6px rgba(0,0,0,0.12);
-  transition: border-color 0.2s, box-shadow 0.2s;
+    0 2px 6px rgba(0, 0, 0, 0.12);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
   width: 100%;
   max-width: 320px;
 }
-.lq-input.is-disabled { opacity: 0.4; pointer-events: none; }
-.lq-input--sm { height: 32px; font-size: 13px; }
-.lq-input--md { height: 40px; font-size: 14.5px; }
-.lq-input--lg { height: 48px; font-size: 16px; }
+.lq-input.is-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+.lq-input--sm {
+  height: 32px;
+  font-size: 13px;
+}
+.lq-input--md {
+  height: 40px;
+  font-size: 14.5px;
+}
+.lq-input--lg {
+  height: 48px;
+  font-size: 16px;
+}
 
 .lq-input:focus-within {
   border-color: var(--accent);
@@ -290,12 +372,14 @@
   min-width: 0;
   color: var(--text-1);
 }
-.lq-input input::placeholder { color: var(--text-3); }
+.lq-input input::placeholder {
+  color: var(--text-3);
+}
 .lq-input__clear {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -303,7 +387,9 @@
   cursor: pointer;
   flex-shrink: 0;
 }
-.lq-input__clear:hover { background: rgba(255,255,255,0.25); }
+.lq-input__clear:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
 
 /* ============ LiquidSearchBar ============ */
 .lq-search {
@@ -319,20 +405,26 @@
   box-shadow:
     inset 0 1px 0 var(--glass-highlight),
     inset 0 -1px 0 var(--glass-shadow-inner),
-    0 4px 14px rgba(0,0,0,0.16);
+    0 4px 14px rgba(0, 0, 0, 0.16);
   height: 38px;
   width: 100%;
   max-width: 360px;
-  transition: box-shadow 0.18s, border-color 0.18s;
+  transition:
+    box-shadow 0.18s,
+    border-color 0.18s;
 }
 .lq-search:focus-within {
   border-color: color-mix(in oklab, var(--accent), transparent 40%);
   box-shadow:
     inset 0 1px 0 var(--glass-highlight),
     0 0 0 4px var(--accent-soft),
-    0 4px 14px rgba(0,0,0,0.18);
+    0 4px 14px rgba(0, 0, 0, 0.18);
 }
-.lq-search__icon { color: var(--text-3); display: inline-flex; flex-shrink: 0; }
+.lq-search__icon {
+  color: var(--text-3);
+  display: inline-flex;
+  flex-shrink: 0;
+}
 .lq-search input {
   flex: 1;
   background: transparent;
@@ -341,12 +433,19 @@
   color: var(--text-1);
   font-size: 14.5px;
 }
-.lq-search input::placeholder { color: var(--text-3); }
+.lq-search input::placeholder {
+  color: var(--text-3);
+}
 .lq-search__mic {
   color: var(--text-3);
   display: inline-flex;
   padding: 4px;
   border-radius: 50%;
-  transition: color 0.12s, background 0.12s;
+  transition:
+    color 0.12s,
+    background 0.12s;
 }
-.lq-search__mic:hover { color: var(--text-1); background: rgba(255,255,255,0.1); }
+.lq-search__mic:hover {
+  color: var(--text-1);
+  background: rgba(255, 255, 255, 0.1);
+}

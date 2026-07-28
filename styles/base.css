@@ -1,12 +1,15 @@
 /* ============================================================
-   Base — reset, typography, layout primitives
+   Base -- reset, typography, layout primitives
    ============================================================ */
 
 *,
 *::before,
-*::after { box-sizing: border-box; }
+*::after {
+  box-sizing: border-box;
+}
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -26,7 +29,12 @@ html, body {
   position: relative;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 600;
   margin: 0;
@@ -42,7 +50,9 @@ button {
   padding: 0;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
   font-family: inherit;
   color: inherit;
 }
@@ -57,7 +67,9 @@ a {
   width: 8px;
   height: 8px;
 }
-::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-track {
+  background: transparent;
+}
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 4px;
@@ -65,16 +77,30 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.18);
 }
-:root[data-theme="light"] ::-webkit-scrollbar-thumb {
+:root[data-theme='light'] ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.12);
 }
 
 /* Utility */
-.row { display: flex; align-items: center; gap: var(--sp-3); }
-.col { display: flex; flex-direction: column; gap: var(--sp-3); }
-.wrap { flex-wrap: wrap; }
-.muted { color: var(--text-3); }
-.mono { font-family: var(--font-mono); }
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.muted {
+  color: var(--text-3);
+}
+.mono {
+  font-family: var(--font-mono);
+}
 
 /* Icon container */
 .icon {
