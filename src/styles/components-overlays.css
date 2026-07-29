@@ -55,12 +55,29 @@
   padding-bottom: 18px;
 }
 
+.lq-modal__head {
+  flex: 0 0 auto;
+}
+
 .lq-modal__body {
+  flex: 1 1 auto;
   min-height: 0;
   max-width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   margin-bottom: 16px;
+  margin-right: -4px;
+  padding-right: 4px;
+}
+
+.lq-modal__footer {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin: 0 -18px;
+  padding: 12px 18px 0;
+  border-top: 1px solid var(--glass-border);
 }
 
 .lq-modal__icon {
@@ -169,8 +186,7 @@
   isolation: isolate;
   position: relative;
   max-height: calc(100vh - 16px);
-  overflow-y: auto;
-  scrollbar-width: thin;
+  overflow: hidden auto;
 }
 
 .lq-menu__item {
@@ -265,11 +281,11 @@
 }
 
 .lq-menu__submenu {
-  position: absolute;
-  top: -6px;
-  left: 100%;
-  z-index: 1;
-  padding-left: 4px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  visibility: hidden;
 }
 
 .lq-menu-trigger {

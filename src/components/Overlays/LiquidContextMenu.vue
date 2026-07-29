@@ -8,8 +8,8 @@
       <div
         v-else-if="item.children && item.children.length"
         class="lq-menu__group"
-        @mouseenter="submenu = i"
-        @mouseleave="submenu = submenu === i ? null : submenu"
+        @mouseenter="openSubmenu(i, $event)"
+        @mouseleave="scheduleClose(i)"
       >
         <button
           :class="['lq-menu__item', { 'is-disabled': item.disabled, 'is-open': submenu === i }]"
@@ -17,17 +17,26 @@
           role="menuitem"
           aria-haspopup="menu"
           :aria-expanded="submenu === i"
-          @click.stop="submenu = submenu === i ? null : i"
-          @keydown.right.prevent="submenu = i"
-          @keydown.left.prevent="submenu = null"
+          @click.stop="submenu === i ? closeSubmenu() : openSubmenu(i, $event)"
+          @keydown.right.prevent="openSubmenu(i, $event)"
+          @keydown.left.prevent="closeSubmenu()"
         >
           <span class="lq-menu__label">{{ item.label }}</span>
           <span class="lq-menu__chevron" aria-hidden="true">›</span>
         </button>
 
-        <div v-if="submenu === i" ref="submenuEl" class="lq-menu__submenu" :style="submenuStyle">
-          <LiquidContextMenu :items="item.children" @select="$emit('select', $event)" />
-        </div>
+        <Teleport to="body">
+          <div
+            v-if="submenu === i"
+            ref="panel"
+            class="lq-menu__submenu"
+            :style="submenuStyle"
+            @mouseenter="cancelClose"
+            @mouseleave="scheduleClose(i)"
+          >
+            <LiquidContextMenu :items="item.children" @select="$emit('select', $event)" />
+          </div>
+        </Teleport>
       </div>
 
       <button
@@ -46,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref, watch } from 'vue'
+import { nextTick, onBeforeUnmount, ref } from 'vue'
 import { iconSvg } from '../../icons'
 import type { MenuItem } from '../../types/menu'
 
@@ -63,40 +72,76 @@ const emit = defineEmits<{
 }>()
 
 const root = ref<HTMLElement | null>(null)
+const panel = ref<HTMLElement | HTMLElement[] | null>(null)
 const submenu = ref<number | null>(null)
-const submenuEl = ref<HTMLElement | HTMLElement[] | null>(null)
-const submenuStyle = ref<Record<string, string>>({})
+const submenuStyle = ref<Record<string, string>>({ visibility: 'hidden' })
 
 const MARGIN = 8
+const GAP = 4
+const RISE = 6
+const CLOSE_DELAY_MS = 140
 
-watch(submenu, async (index) => {
-  submenuStyle.value = {}
-  if (index === null) return
+let anchor: HTMLElement | null = null
+let closeTimer: ReturnType<typeof setTimeout> | null = null
+
+function cancelClose() {
+  if (closeTimer) clearTimeout(closeTimer)
+  closeTimer = null
+}
+
+function closeSubmenu() {
+  cancelClose()
+  submenu.value = null
+  anchor = null
+  submenuStyle.value = { visibility: 'hidden' }
+}
+
+function scheduleClose(index: number) {
+  cancelClose()
+  closeTimer = setTimeout(() => {
+    if (submenu.value === index) closeSubmenu()
+  }, CLOSE_DELAY_MS)
+}
+
+async function openSubmenu(index: number, event: Event) {
+  cancelClose()
+
+  const target = event.currentTarget as HTMLElement | null
+  anchor = target?.closest<HTMLElement>('.lq-menu__group') ?? target
+  submenu.value = index
+  submenuStyle.value = { visibility: 'hidden' }
 
   await nextTick()
-  const raw = submenuEl.value
+  place()
+}
+
+function place() {
+  const raw = panel.value
   const element = Array.isArray(raw) ? raw[0] : raw
-  if (!element) return
+  if (!element || !anchor) return
 
-  const rect = element.getBoundingClientRect()
-  const style: Record<string, string> = {}
+  const row = anchor.getBoundingClientRect()
+  const box = element.getBoundingClientRect()
 
-  if (rect.bottom > window.innerHeight - MARGIN) {
-    style.top = 'auto'
-    style.bottom = '-6px'
-  }
-  if (rect.right > window.innerWidth - MARGIN) {
-    style.left = 'auto'
-    style.right = '100%'
-    style.paddingLeft = '0'
-    style.paddingRight = '4px'
+  const flips = row.right + GAP + box.width > window.innerWidth - MARGIN
+  const left = flips ? Math.max(MARGIN, row.left - GAP - box.width) : row.right + GAP
+
+  let top = row.top - RISE
+  if (top + box.height > window.innerHeight - MARGIN) {
+    top = Math.max(MARGIN, window.innerHeight - MARGIN - box.height)
   }
 
-  submenuStyle.value = style
-})
+  submenuStyle.value = { left: `${left}px`, top: `${top}px`, visibility: 'visible' }
+}
+
+onBeforeUnmount(cancelClose)
 
 function onKeydown(event: KeyboardEvent) {
   if (event.key === 'Escape') {
+    if (submenu.value !== null) {
+      closeSubmenu()
+      return
+    }
     emit('close')
     return
   }

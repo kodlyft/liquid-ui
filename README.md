@@ -70,15 +70,15 @@ const wifi = ref(true)
 
 ## Components
 
-| Category   | Components                                                                                           |
-| ---------- | ---------------------------------------------------------------------------------------------------- |
-| Actions    | `LiquidButton`, `LiquidIconButton`                                                                   |
-| Forms      | `LiquidToggle`, `LiquidSegmented`, `LiquidSlider`, `LiquidStepper`, `LiquidInput`, `LiquidSearchBar` |
-| Display    | `LiquidCard`, `LiquidBadge`, `LiquidAvatar`, `LiquidListRow`, `LiquidProgress`, `LiquidSpinner`      |
-| Overlays   | `LiquidModal`, `LiquidContextMenu`, `LiquidToast`, `LiquidNotification`, `LiquidPopover`             |
-| Navigation | `LiquidTabBar`                                                                                       |
-| Media      | `LiquidAudioPlayer`                                                                                  |
-| Input      | `LiquidKeyboard`                                                                                     |
+| Category   | Components                                                                                                          |
+| ---------- | ------------------------------------------------------------------------------------------------------------------- |
+| Actions    | `LiquidButton`, `LiquidIconButton`                                                                                  |
+| Forms      | `LiquidToggle`, `LiquidCheck`, `LiquidSegmented`, `LiquidSlider`, `LiquidStepper`, `LiquidInput`, `LiquidSearchBar` |
+| Display    | `LiquidCard`, `LiquidBadge`, `LiquidAvatar`, `LiquidListRow`, `LiquidProgress`, `LiquidSpinner`                     |
+| Overlays   | `LiquidModal`, `LiquidContextMenu`, `LiquidToast`, `LiquidNotification`, `LiquidPopover`                            |
+| Navigation | `LiquidTabBar`                                                                                                      |
+| Media      | `LiquidAudioPlayer`                                                                                                 |
+| Input      | `LiquidKeyboard`                                                                                                    |
 
 ## Theming
 

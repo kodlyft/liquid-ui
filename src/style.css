@@ -1,5 +1,6 @@
 @import './styles/tokens.css';
 @import './styles/glass.css';
+@import './styles/scrollbars.css';
 @import './styles/components-actions.css';
 @import './styles/components-forms.css';
 @import './styles/components-display.css';

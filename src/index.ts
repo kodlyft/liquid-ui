@@ -7,6 +7,7 @@ import LiquidIconButton from './components/Button/LiquidIconButton.vue'
 
 // Forms
 import LiquidToggle from './components/Forms/LiquidToggle.vue'
+import LiquidCheck from './components/Forms/LiquidCheck.vue'
 import LiquidSegmented from './components/Forms/LiquidSegmented.vue'
 import LiquidSlider from './components/Forms/LiquidSlider.vue'
 import LiquidStepper from './components/Forms/LiquidStepper.vue'
@@ -42,6 +43,7 @@ export {
   LiquidButton,
   LiquidIconButton,
   LiquidToggle,
+  LiquidCheck,
   LiquidSegmented,
   LiquidSlider,
   LiquidStepper,
@@ -68,6 +70,7 @@ const components = {
   LiquidButton,
   LiquidIconButton,
   LiquidToggle,
+  LiquidCheck,
   LiquidSegmented,
   LiquidSlider,
   LiquidStepper,

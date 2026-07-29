@@ -13,16 +13,22 @@
           role="dialog"
           aria-modal="true"
         >
-          <div
-            v-if="icon"
-            class="lq-modal__icon"
-            :style="{ color: iconColor || 'currentColor' }"
-            v-html="iconSvg(icon, 28)"
-          />
-          <h3 v-if="title" class="lq-modal__title">{{ title }}</h3>
-          <p v-if="message" class="lq-modal__message">{{ message }}</p>
+          <div v-if="icon || title || message || $slots.header" class="lq-modal__head">
+            <div
+              v-if="icon"
+              class="lq-modal__icon"
+              :style="{ color: iconColor || 'currentColor' }"
+              v-html="iconSvg(icon, 28)"
+            />
+            <h3 v-if="title" class="lq-modal__title">{{ title }}</h3>
+            <p v-if="message" class="lq-modal__message">{{ message }}</p>
+            <slot name="header" />
+          </div>
           <div v-if="$slots.default" class="lq-modal__body">
             <slot />
+          </div>
+          <div v-if="$slots.footer" class="lq-modal__footer">
+            <slot name="footer" />
           </div>
           <div v-if="actions" class="lq-modal__actions">
             <button class="lq-modal__btn lq-modal__btn--cancel" @click="onCancel">

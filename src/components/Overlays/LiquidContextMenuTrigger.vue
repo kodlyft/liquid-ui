@@ -83,6 +83,7 @@ function onSelect(item: MenuItem) {
 
 function onPointerDown(event: PointerEvent) {
   if (layer.value?.contains(event.target as Node)) return
+  if ((event.target as HTMLElement | null)?.closest?.('.lq-menu')) return
   close()
 }
 

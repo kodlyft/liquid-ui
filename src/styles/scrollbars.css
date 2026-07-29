@@ -1,0 +1,71 @@
+/* ============================================================
+   Scrollbars
+
+   iOS shows a thin rounded overlay indicator, not a track with
+   stepper buttons. WebKit gives us the shape but not the overlay
+   behaviour, so the track is left transparent and the buttons are
+   removed -- what is left reads as the iOS indicator.
+   ============================================================ */
+
+:root {
+  --scrollbar-size: 7px;
+  --scrollbar-inset: 2px;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.24);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.4);
+}
+
+:root[data-theme='light'] {
+  --scrollbar-thumb: rgba(0, 0, 0, 0.24);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.42);
+}
+
+:root {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+  background: transparent;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-corner {
+  background: transparent;
+  border: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: var(--r-pill);
+  border: var(--scrollbar-inset) solid transparent;
+  background-clip: padding-box;
+  min-height: 28px;
+  min-width: 28px;
+  transition: background-color 0.15s var(--ease-out);
+}
+
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+.lq-scroll {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lq-scroll--y {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
