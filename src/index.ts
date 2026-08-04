@@ -13,6 +13,7 @@ import LiquidSlider from './components/Forms/LiquidSlider.vue'
 import LiquidStepper from './components/Forms/LiquidStepper.vue'
 import LiquidInput from './components/Forms/LiquidInput.vue'
 import LiquidSearchBar from './components/Forms/LiquidSearchBar.vue'
+import LiquidAutocomplete from './components/Forms/LiquidAutocomplete.vue'
 
 // Display
 import LiquidCard from './components/Display/LiquidCard.vue'
@@ -38,6 +39,7 @@ import LiquidKeyboard from './components/Special/LiquidKeyboard.vue'
 // Utilities + types
 export { iconSvg, type IconName } from './icons'
 export type { MenuItem } from './types/menu'
+export type { AutocompleteOption } from './components/Forms/LiquidAutocomplete.vue'
 
 export {
   LiquidButton,
@@ -49,6 +51,7 @@ export {
   LiquidStepper,
   LiquidInput,
   LiquidSearchBar,
+  LiquidAutocomplete,
   LiquidCard,
   LiquidBadge,
   LiquidAvatar,
@@ -76,6 +79,7 @@ const components = {
   LiquidStepper,
   LiquidInput,
   LiquidSearchBar,
+  LiquidAutocomplete,
   LiquidCard,
   LiquidBadge,
   LiquidAvatar,

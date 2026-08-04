@@ -131,7 +131,12 @@ function place() {
     top = Math.max(MARGIN, window.innerHeight - MARGIN - box.height)
   }
 
-  submenuStyle.value = { left: `${left}px`, top: `${top}px`, visibility: 'visible' }
+  submenuStyle.value = {
+    position: 'fixed',
+    left: `${left}px`,
+    top: `${top}px`,
+    visibility: 'visible',
+  }
 }
 
 onBeforeUnmount(cancelClose)
