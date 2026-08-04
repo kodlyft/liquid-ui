@@ -1,3 +1,9 @@
+## 1.1.0 (2026-08-04)
+
+* feat: add LiquidAutocomplete component with styles and functionality ([719a376](https://github.com/kodlyft/liquid-ui/commit/719a376))
+* feat: add LiquidCheck component and integrate into forms; update modal and context menu styles ([6c541ff](https://github.com/kodlyft/liquid-ui/commit/6c541ff))
+* fix: enhance modal body styling for better overflow handling and layout ([62b18b0](https://github.com/kodlyft/liquid-ui/commit/62b18b0))
+
 ## <small>1.0.2 (2026-07-28)</small>
 
 * refactor: standardize comment formatting and improve Liquid UI components ([6aab535](https://github.com/kodlyft/liquid-ui/commit/6aab535))
