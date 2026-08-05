@@ -216,6 +216,96 @@ const toggle = () => !props.disabled && emit('update:modelValue', !props.modelVa
   },
 
   {
+    id: 'check',
+    category: 'Forms',
+    label: 'Check',
+    icon: 'check',
+    title: 'Checkbox',
+    description:
+      'A checkbox for multi-select lists and consent rows. Wraps a real `<input type="checkbox">`, so labels, focus rings, and form submission behave natively. Pass `indeterminate` for the mixed state of a parent row, and `description` for a second line of explanatory text.',
+    component: 'LiquidCheck',
+    knobs: {
+      modelValue: { type: 'bool', default: true, label: 'value' },
+      label: { type: 'text', default: 'Sync over cellular' },
+      description: { type: 'text', default: '' },
+      size: { type: 'seg', options: ['sm', 'md'], default: 'md' },
+      indeterminate: { type: 'bool', default: false },
+      disabled: { type: 'bool', default: false },
+    },
+    isModel: 'modelValue',
+    render: (k) =>
+      `<liquid-check :model-value="${k.modelValue}" label="${k.label}" description="${k.description}" size="${k.size}" ${k.indeterminate ? 'indeterminate' : ''} ${k.disabled ? 'disabled' : ''} @update:model-value="updateValue"></liquid-check>`,
+    variants: [
+      { label: 'Checked', props: { modelValue: true, label: 'Sync over cellular' } },
+      { label: 'Unchecked', props: { modelValue: false, label: 'Sync over cellular' } },
+      { label: 'Indeterminate', props: { modelValue: false, indeterminate: true, label: 'All' } },
+      {
+        label: 'With description',
+        props: {
+          modelValue: true,
+          label: 'Back up photos',
+          description: 'Uploads when charging.',
+        },
+      },
+      { label: 'Small', props: { modelValue: true, size: 'sm', label: 'Compact' } },
+      { label: 'Disabled', props: { modelValue: true, disabled: true, label: 'Managed' } },
+    ],
+    usage: `<LiquidCheck v-model="cellular" label="Sync over cellular" />
+
+<LiquidCheck
+  v-model="backup"
+  label="Back up photos"
+  description="Uploads when charging."
+/>
+
+<!-- Mixed state for a "select all" row -->
+<LiquidCheck :model-value="allSelected" :indeterminate="someSelected" label="All" />`,
+    sfc: `<template>
+  <label
+    :class="[
+      'lq-check',
+      \`lq-check--\${size}\`,
+      { 'is-checked': modelValue, 'is-indeterminate': indeterminate, 'is-disabled': disabled },
+      { 'lq-check--stacked': hasDescription }
+    ]"
+  >
+    <input
+      ref="input"
+      class="lq-check__input"
+      type="checkbox"
+      :checked="modelValue"
+      :disabled="disabled"
+      @change="onChange"
+    />
+    <span class="lq-check__box" aria-hidden="true">
+      <span class="lq-check__mark" v-html="markSvg" />
+    </span>
+    <span v-if="hasText" class="lq-check__text">
+      <span class="lq-check__label"><slot>{{ label }}</slot></span>
+      <span v-if="hasDescription" class="lq-check__hint">
+        <slot name="description">{{ description }}</slot>
+      </span>
+    </span>
+  </label>
+</template>
+
+<script setup>
+import { computed, onMounted, ref, watch } from 'vue'
+import { iconSvg } from '../icons'
+
+const markSvg = computed(() => iconSvg(props.indeterminate ? 'minus' : 'check', 24))
+
+// The mixed state lives on the DOM node, not in an attribute.
+const input = ref(null)
+const syncIndeterminate = () => {
+  if (input.value) input.value.indeterminate = props.indeterminate
+}
+onMounted(syncIndeterminate)
+watch(() => props.indeterminate, syncIndeterminate)
+</script>`,
+  },
+
+  {
     id: 'segmented',
     category: 'Forms',
     label: 'Segmented',
@@ -394,6 +484,125 @@ const toggle = () => !props.disabled && emit('update:modelValue', !props.modelVa
       { label: 'No mic', props: { modelValue: '', showMic: false } },
     ],
     usage: `<LiquidSearchBar v-model="query" placeholder="Search music" @submit="onSearch" />`,
+  },
+
+  {
+    id: 'autocomplete',
+    category: 'Forms',
+    label: 'Autocomplete',
+    icon: 'options',
+    title: 'Autocomplete',
+    description:
+      'A combobox for picking one value out of many. Type to narrow, arrow keys to move, Enter to take the highlighted row, Escape to back out. The parent owns the list -- every keystroke emits a debounced `@search`, so the options can come from an API. The panel is teleported to the body, sized to the field, and flips above it when the viewport runs out of room below.',
+    component: 'LiquidAutocomplete',
+    custom: 'autocomplete',
+    knobs: {
+      modelValue: { type: 'text', default: '', label: 'value' },
+      placeholder: { type: 'text', default: 'Search cities' },
+      icon: { type: 'select', options: ['', 'search', 'person', 'options'], default: 'search' },
+      size: { type: 'seg', options: ['sm', 'md', 'lg'], default: 'md' },
+      emptyText: { type: 'text', default: 'No matches' },
+      clearable: { type: 'bool', default: true },
+      allowCreate: { type: 'bool', default: false },
+      loading: { type: 'bool', default: false },
+      disabled: { type: 'bool', default: false },
+    },
+    isModel: 'modelValue',
+    variants: [
+      {
+        label: 'Selected',
+        props: {
+          modelValue: 'lisbon',
+          options: [{ value: 'lisbon', label: 'Lisbon', description: 'Portugal' }],
+          icon: 'search',
+        },
+      },
+      { label: 'Empty', props: { modelValue: '', placeholder: 'Search cities', icon: 'search' } },
+      { label: 'Loading', props: { modelValue: '', placeholder: 'Fetching…', loading: true } },
+      {
+        label: 'Small',
+        props: { modelValue: 'kyoto', options: [{ value: 'kyoto', label: 'Kyoto' }], size: 'sm' },
+      },
+      {
+        label: 'Disabled',
+        props: {
+          modelValue: 'berlin',
+          options: [{ value: 'berlin', label: 'Berlin' }],
+          disabled: true,
+        },
+      },
+    ],
+    usage: `<template>
+  <LiquidAutocomplete
+    v-model="city"
+    :options="options"
+    :loading="loading"
+    icon="search"
+    placeholder="Search cities"
+    empty-text="No cities found"
+    @search="onSearch"
+  />
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { LiquidAutocomplete } from '@kodlyft/liquid-ui'
+
+const city = ref('')
+const options = ref([])
+const loading = ref(false)
+
+// Fires on focus and on every keystroke, debounced by :debounce (250ms).
+const onSearch = async (query) => {
+  loading.value = true
+  options.value = await fetchCities(query)   // [{ value, label?, description? }]
+  loading.value = false
+}
+</script>`,
+    sfc: `<template>
+  <div ref="rootEl" :class="['lq-autocomplete', \`lq-autocomplete--\${size}\`, { 'is-disabled': disabled }]">
+    <label class="lq-autocomplete__control">
+      <span v-if="icon" class="lq-autocomplete__icon" v-html="iconSvg(icon, iconSize)" />
+      <input
+        ref="inputEl"
+        type="text"
+        role="combobox"
+        aria-autocomplete="list"
+        :value="text"
+        :aria-expanded="open"
+        @input="onInput"
+        @focus="onFocus"
+        @blur="onBlur"
+        @keydown="onKeydown"
+      />
+      <span v-if="loading" class="lq-autocomplete__spinner" />
+      <button v-else-if="clearable && modelValue" class="lq-autocomplete__clear" @click="clear">
+        <span v-html="iconSvg('close', 12)" />
+      </button>
+      <span v-else class="lq-autocomplete__caret" v-html="iconSvg('chevronDown', 14)" />
+    </label>
+
+    <!-- Teleported so no ancestor with overflow can clip the list. -->
+    <Teleport to="body">
+      <div v-if="open" ref="panelEl" class="lq-autocomplete__panel lq-glass" role="listbox" :style="panelStyle">
+        <button
+          v-for="(option, index) in options"
+          :key="option.value"
+          role="option"
+          :aria-selected="index === active"
+          :class="['lq-autocomplete__option', { 'is-active': index === active }]"
+          @mousedown.prevent
+          @click="choose(option)"
+        >
+          <span class="lq-autocomplete__label">{{ option.label ?? option.value }}</span>
+          <span v-if="option.description" class="lq-autocomplete__description">
+            {{ option.description }}
+          </span>
+        </button>
+      </div>
+    </Teleport>
+  </div>
+</template>`,
   },
 
   {
@@ -746,6 +955,54 @@ const toggle = () => !props.disabled && emit('update:modelValue', !props.modelVa
   message="Leaving now"
   time="now"
 />`,
+  },
+
+  {
+    id: 'popover',
+    category: 'Overlays',
+    label: 'Popover',
+    icon: 'message',
+    title: 'Popover',
+    description:
+      'A small glass bubble anchored to whatever opens it. The anchor goes in the `trigger` slot, the content in the default slot, and `open` stays yours to control -- so the same component covers a tooltip, a hint, or a tiny confirmation. `placement` puts the bubble above or below the trigger.',
+    component: 'LiquidPopover',
+    custom: 'popover',
+    knobs: {
+      open: { type: 'bool', default: true },
+      placement: { type: 'seg', options: ['top', 'bottom'], default: 'top' },
+      label: { type: 'text', default: 'Show details', label: 'trigger' },
+      content: { type: 'text', default: 'Saved 2 minutes ago' },
+    },
+    variants: [],
+    usage: `<LiquidPopover :open="open" placement="top">
+  <template #trigger>
+    <LiquidButton variant="secondary" @click="open = !open">
+      Show details
+    </LiquidButton>
+  </template>
+
+  Saved 2 minutes ago
+</LiquidPopover>`,
+    sfc: `<template>
+  <span class="lq-popover-host">
+    <slot name="trigger" />
+    <Transition name="lq-pop">
+      <span
+        v-if="open"
+        :class="['lq-popover', 'lq-glass-strong', 'lq-specular', \`lq-popover--\${placement}\`]"
+      >
+        <slot />
+      </span>
+    </Transition>
+  </span>
+</template>
+
+<script setup>
+defineProps({
+  open:      { type: Boolean, default: false },
+  placement: { type: String,  default: 'top' },  // top | bottom
+})
+</script>`,
   },
 
   // -----------------------------------------------------------

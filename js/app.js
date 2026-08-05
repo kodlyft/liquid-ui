@@ -173,7 +173,18 @@
         let demoBody
         if (page.custom === 'modal') demoBody = h(SS.ModalDemo, { knobs })
         else if (page.custom === 'menu') demoBody = h(SS.MenuDemo, { knobs })
+        else if (page.custom === 'menuTrigger') demoBody = h(SS.MenuTriggerDemo, { knobs })
         else if (page.custom === 'toast') demoBody = h(SS.ToastDemo, { knobs })
+        else if (page.custom === 'popover')
+          demoBody = h(SS.PopoverDemo, {
+            knobs,
+            onUpdate: (k, v) => emit('knob-change', k, v),
+          })
+        else if (page.custom === 'autocomplete')
+          demoBody = h(SS.AutocompleteDemo, {
+            knobs,
+            onUpdate: (k, v) => emit('knob-change', k, v),
+          })
         else if (page.custom === 'tabbar')
           demoBody = h(SS.TabBarDemo, {
             knobs,
@@ -210,6 +221,8 @@
                     page.id === 'keyboard' ||
                     page.id === 'audio' ||
                     page.id === 'menu' ||
+                    page.id === 'menu-trigger' ||
+                    page.id === 'popover' ||
                     page.id === 'tabbar'
                       ? 'tall'
                       : '',
@@ -414,11 +427,13 @@
       'LiquidButton',
       'LiquidIconButton',
       'LiquidToggle',
+      'LiquidCheck',
       'LiquidSegmented',
       'LiquidSlider',
       'LiquidStepper',
       'LiquidInput',
       'LiquidSearchBar',
+      'LiquidAutocomplete',
       'LiquidCard',
       'LiquidBadge',
       'LiquidAvatar',

@@ -468,6 +468,85 @@
     },
   })
 
+  const PopoverDemo = defineComponent({
+    props: ['knobs'],
+    emits: ['update'],
+    setup(props, { emit }) {
+      return () =>
+        h(
+          window.LiquidPopover,
+          {
+            open: props.knobs.open,
+            placement: props.knobs.placement,
+          },
+          {
+            trigger: () =>
+              h(
+                window.LiquidButton,
+                {
+                  variant: props.knobs.open ? 'tinted' : 'secondary',
+                  onClick: () => emit('update', 'open', !props.knobs.open),
+                },
+                () => props.knobs.label,
+              ),
+            default: () => props.knobs.content,
+          },
+        )
+    },
+  })
+
+  const AutocompleteDemo = defineComponent({
+    props: ['knobs'],
+    emits: ['update'],
+    setup(props, { emit }) {
+      const CITIES = [
+        { value: 'amsterdam', label: 'Amsterdam', description: 'Netherlands' },
+        { value: 'barcelona', label: 'Barcelona', description: 'Spain' },
+        { value: 'berlin', label: 'Berlin', description: 'Germany' },
+        { value: 'copenhagen', label: 'Copenhagen', description: 'Denmark' },
+        { value: 'kyoto', label: 'Kyoto', description: 'Japan' },
+        { value: 'lisbon', label: 'Lisbon', description: 'Portugal' },
+        { value: 'melbourne', label: 'Melbourne', description: 'Australia' },
+        { value: 'montreal', label: 'Montréal', description: 'Canada' },
+        { value: 'reykjavik', label: 'Reykjavík', description: 'Iceland' },
+        { value: 'seoul', label: 'Seoul', description: 'South Korea' },
+        { value: 'tbilisi', label: 'Tbilisi', description: 'Georgia' },
+        { value: 'vienna', label: 'Vienna', description: 'Austria' },
+      ]
+
+      // Mirrors a real integration: the parent owns the list and narrows it
+      // whenever the component asks with @search.
+      const query = ref('')
+      const options = computed(() => {
+        const q = query.value.trim().toLowerCase()
+        if (!q) return CITIES
+        return CITIES.filter(
+          (c) =>
+            c.label.toLowerCase().includes(q) || (c.description || '').toLowerCase().includes(q),
+        )
+      })
+
+      return () =>
+        h('div', { style: 'width:300px' }, [
+          h(window.LiquidAutocomplete, {
+            modelValue: props.knobs.modelValue,
+            'onUpdate:modelValue': (v) => emit('update', 'modelValue', v),
+            onSearch: (v) => (query.value = v),
+            options: options.value,
+            placeholder: props.knobs.placeholder,
+            icon: props.knobs.icon,
+            size: props.knobs.size,
+            clearable: props.knobs.clearable,
+            allowCreate: props.knobs.allowCreate,
+            loading: props.knobs.loading,
+            disabled: props.knobs.disabled,
+            emptyText: props.knobs.emptyText,
+            debounce: 0,
+          }),
+        ])
+    },
+  })
+
   const TabBarDemo = defineComponent({
     props: ['knobs'],
     emits: ['update'],
@@ -621,6 +700,10 @@
         else if (page.custom === 'menu') demoBody = h(MenuDemo, { knobs: knobValues })
         else if (page.custom === 'menuTrigger') demoBody = h(MenuTriggerDemo, { knobs: knobValues })
         else if (page.custom === 'toast') demoBody = h(ToastDemo, { knobs: knobValues })
+        else if (page.custom === 'popover')
+          demoBody = h(PopoverDemo, { knobs: knobValues, onUpdate: setKnob })
+        else if (page.custom === 'autocomplete')
+          demoBody = h(AutocompleteDemo, { knobs: knobValues, onUpdate: setKnob })
         else if (page.custom === 'tabbar')
           demoBody = h(TabBarDemo, { knobs: knobValues, onUpdate: setKnob })
         else if (typeof page.render === 'function') {
@@ -705,7 +788,10 @@
     highlight,
     ModalDemo,
     MenuDemo,
+    MenuTriggerDemo,
     ToastDemo,
+    PopoverDemo,
+    AutocompleteDemo,
     TabBarDemo,
     VariantCell,
   }

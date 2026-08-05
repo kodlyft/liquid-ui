@@ -10,7 +10,7 @@
 [![semantic-release](https://img.shields.io/badge/semantic--release-conventional-e10079?style=flat-square&logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
 Layered blur, tinted glass, soft specular highlights, spring micro-interactions
-rendered as 22 production-ready Vue 3 components.
+rendered as 25 production-ready Vue 3 components.
 
 </div>
 
@@ -18,7 +18,7 @@ rendered as 22 production-ready Vue 3 components.
 
 ## Features
 
-- **22 components** across 7 categories: buttons, forms, display, overlays,
+- **25 components** across 7 categories: buttons, forms, display, overlays,
   navigation, media, and input.
 - **Authentic iOS 26 Liquid Glass treatment** backdrop blur + saturation, top
   inner highlight, soft inset shadow, specular sheen overlay, accent halo glow.
@@ -70,15 +70,15 @@ const wifi = ref(true)
 
 ## Components
 
-| Category   | Components                                                                                                          |
-| ---------- | ------------------------------------------------------------------------------------------------------------------- |
-| Actions    | `LiquidButton`, `LiquidIconButton`                                                                                  |
-| Forms      | `LiquidToggle`, `LiquidCheck`, `LiquidSegmented`, `LiquidSlider`, `LiquidStepper`, `LiquidInput`, `LiquidSearchBar` |
-| Display    | `LiquidCard`, `LiquidBadge`, `LiquidAvatar`, `LiquidListRow`, `LiquidProgress`, `LiquidSpinner`                     |
-| Overlays   | `LiquidModal`, `LiquidContextMenu`, `LiquidToast`, `LiquidNotification`, `LiquidPopover`                            |
-| Navigation | `LiquidTabBar`                                                                                                      |
-| Media      | `LiquidAudioPlayer`                                                                                                 |
-| Input      | `LiquidKeyboard`                                                                                                    |
+| Category   | Components                                                                                                                                |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Actions    | `LiquidButton`, `LiquidIconButton`                                                                                                        |
+| Forms      | `LiquidToggle`, `LiquidCheck`, `LiquidSegmented`, `LiquidSlider`, `LiquidStepper`, `LiquidInput`, `LiquidSearchBar`, `LiquidAutocomplete` |
+| Display    | `LiquidCard`, `LiquidBadge`, `LiquidAvatar`, `LiquidListRow`, `LiquidProgress`, `LiquidSpinner`                                           |
+| Overlays   | `LiquidModal`, `LiquidContextMenu`, `LiquidContextMenuTrigger`, `LiquidToast`, `LiquidNotification`, `LiquidPopover`                      |
+| Navigation | `LiquidTabBar`                                                                                                                            |
+| Media      | `LiquidAudioPlayer`                                                                                                                       |
+| Input      | `LiquidKeyboard`                                                                                                                          |
 
 ## Theming
 
@@ -163,7 +163,9 @@ npm run build
 │   ├── icons.ts            SF Symbols-style icon registry
 │   ├── style.css           Public stylesheet entry
 │   └── index.ts            Named exports + install plugin
-├── Liquid UI.html          Standalone showcase (uses CDN Vue)
+├── index.html              Showcase site (CDN Vue + js/ + styles/)
+├── js/                     Showcase app: docs registry, shell, demo components
+├── styles/                 Showcase stylesheets (component CSS mirrors src/styles)
 ├── .github/workflows/      CI + release automation
 ├── vite.config.ts          Library build config
 ├── vitest.config.ts        Test config
