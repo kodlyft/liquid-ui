@@ -1,3 +1,7 @@
+## <small>1.1.1 (2026-08-05)</small>
+
+* refactor: add LiquidCheck and LiquidAutocomplete components with styles and ([0af7d2d](https://github.com/kodlyft/liquid-ui/commit/0af7d2d))
+
 ## 1.1.0 (2026-08-04)
 
 * feat: add LiquidAutocomplete component with styles and functionality ([719a376](https://github.com/kodlyft/liquid-ui/commit/719a376))

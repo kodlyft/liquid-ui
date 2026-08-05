@@ -1,6 +1,6 @@
 {
   "name": "@kodlyft/liquid-ui",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Liquid UI, a Vue 3 component library with the iOS 26 Liquid Glass aesthetic.",
   "keywords": [
     "vue",
